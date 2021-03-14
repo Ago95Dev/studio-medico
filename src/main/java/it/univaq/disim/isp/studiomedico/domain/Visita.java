@@ -3,10 +3,12 @@ package it.univaq.disim.isp.studiomedico.domain;
 import java.util.Date;
 
 public class Visita {
-	
+
+	private String nome;
+	private float prezzo;
 	private Medico medico ;
 	private Paziente paziente;
-	private Date data;
+	private Date data, durata;
 
 	public Visita(Medico m,Paziente p,Date data) {
 		this.medico=m;
