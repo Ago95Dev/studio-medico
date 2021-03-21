@@ -15,9 +15,7 @@ import it.univaq.disim.isp.studiomedico.view.ViewException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 //classe LoginController che implementa Initializable e DataInitializable>Object>
@@ -25,10 +23,10 @@ public class LoginController implements Initializable, DataInitializable<Object>
 
 	//componenti
 	@FXML
-	private JFXTextField username;
+	private TextField email;
 
 	@FXML
-	private JFXPasswordField password;
+	private PasswordField password;
 
 	@FXML
 	private Label loginErrorLabel;
@@ -36,11 +34,11 @@ public class LoginController implements Initializable, DataInitializable<Object>
 	@FXML
 	private Button loginButton;
 
-	@FXML
-	private JFXTextField label;
+/*	@FXML
+	private TextField label;*/
 
-	@FXML
-	private CheckBox checkbox;
+/*	@FXML
+	private CheckBox checkbox;*/
 
 	//dichiarazione variabili
 	private ViewDispatcher manage;
@@ -58,15 +56,16 @@ public class LoginController implements Initializable, DataInitializable<Object>
 	//inizializzazione del metodo login
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		label.setVisible(false);
-		loginButton.disableProperty().bind(username.textProperty().isEmpty().or(password.textProperty().isEmpty()));
+		//label.setVisible(false);
+		loginButton.disableProperty().bind(email.textProperty().isEmpty().or(password.textProperty().isEmpty()));
 		//disattiva il pulsante fino a quando nn viene scritto la user e la password
 	}
 
 	@FXML // Autenticazione
 	private void loginAction(ActionEvent event) throws BusinessException, UtenteNotFoundException {
 		try {
-			Utente utente = utenteService.autenticazione(username.getText(), password.getText());
+			Utente utente = utenteService.autenticazione(email.getText(), password.getText());
+			loginErrorLabel.setText("Username e/o password corretti!");
 			manage.loggedIn(utente);
 		} catch (UtenteNotFoundException e) {
 			loginErrorLabel.setText("Username e/o password errati!");
@@ -85,7 +84,7 @@ public class LoginController implements Initializable, DataInitializable<Object>
 	}
 
 	//metodo utilizzato dalla checkbox per mostrare la password
-	@FXML
+/*	@FXML
 	public void mostrapass(ActionEvent e) {
 		if (checkbox.isSelected()) {
 			String password2 = password.getText();
@@ -99,6 +98,6 @@ public class LoginController implements Initializable, DataInitializable<Object>
 		}
 
 
-	}
+	}*/
 
 }

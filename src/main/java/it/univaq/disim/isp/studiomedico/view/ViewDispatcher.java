@@ -14,16 +14,15 @@ import javafx.stage.Stage;
 public class ViewDispatcher {
 
 
-	private static final String RESOURE_BASE = "/viste/";
-	private static final ViewDispatcher instance = new ViewDispatcher();//dichiaro una varabile statica
+	private static final String RESOURCE_BASE = "/viste/";
+	private static final String FXML_SUFFIX = ".fxml";
+	private static ViewDispatcher instance = new ViewDispatcher();//dichiaro una varabile statica
 
 	private Stage stage;
 	private BorderPane layout;
 
-	private ViewDispatcher() //definisco il costruttore privato cosi nessuna altra classe puo fare new
-	{
+	private ViewDispatcher(){} //definisco il costruttore privato cosi nessuna altra classe puo fare new
 
-	}
 
 	public static ViewDispatcher getInstance() //ritorna l'oggetto a cui punta
 	{
@@ -95,8 +94,8 @@ public class ViewDispatcher {
 
 	private <T> View<T> loadView(String viewName) throws ViewException {//ritorna nn un oggetto parent ma un oggetto di tipo view
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(RESOURE_BASE + viewName + ".fxml"));
-			Parent parent = loader.load();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(RESOURCE_BASE + viewName + FXML_SUFFIX));
+			Parent parent = (Parent) loader.load();
 			return new View<>(parent, loader.getController());
 		} catch (IOException e) {
 			e.printStackTrace();

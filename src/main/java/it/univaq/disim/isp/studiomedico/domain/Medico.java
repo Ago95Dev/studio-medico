@@ -14,7 +14,11 @@ public class Medico extends Paziente {
 		super(id, nome, cognome, cf, telefono, luogoDiNascita, email, password, dataDiNascita);
 	}
 
-	// public Medico(String nome, String cognome, String mail, String password) {
+    public Medico() {
+        super();
+    }
+
+    // public Medico(String nome, String cognome, String mail, String password) {
 	//	super(nome, cognome, mail, password);
 	}
 	

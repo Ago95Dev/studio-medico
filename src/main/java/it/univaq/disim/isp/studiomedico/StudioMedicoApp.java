@@ -1,4 +1,4 @@
-package it.univaq.disim.isp.studiomedico.domain;
+package it.univaq.disim.isp.studiomedico;
 
 import it.univaq.disim.isp.studiomedico.view.ViewDispatcher;
 import it.univaq.disim.isp.studiomedico.view.ViewException;

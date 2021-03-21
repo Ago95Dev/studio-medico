@@ -1,9 +1,8 @@
-package it.univaq.disim.isp.studiomedico.business.impl.jdbc;
+package it.univaq.disim.isp.studiomedico.business.impl;
 
 import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
 import it.univaq.disim.isp.studiomedico.business.UtenteService;
 import it.univaq.disim.isp.studiomedico.business.StudioMedicoBusinessFactory;
-import it.univaq.disim.isp.studiomedico.business.impl.UtenteServiceDB;
 
 public class BusinessFactoryDB extends StudioMedicoBusinessFactory {
 

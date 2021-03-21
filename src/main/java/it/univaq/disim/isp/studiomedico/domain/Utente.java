@@ -4,15 +4,17 @@ import java.util.Date;
 
 public class Utente {
 
-	private Integer id;
+	private Integer Id;
 	private String nome,cognome,cf,telefono,luogoDiNascita,email,password;
 	private Date dataDiNascita;
 
 	public Utente(){}
 
+
+
 	public Utente(Integer id, String nome, String cognome, String cf, String telefono, String luogoDiNascita,
-			String email, String password, Date dataDiNascita) {
-		this.id = id;
+				  String email, String password, Date dataDiNascita) {
+		this.Id = id;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.cf = cf;
@@ -24,8 +26,9 @@ public class Utente {
 	}
 
 	public int getId() {
-		return id;
+		return Id;
 	}
+	public void setId(int id_utente) {this.Id = id_utente;}
 	public String getNome() {
 		return nome;
 	}
@@ -41,6 +44,7 @@ public class Utente {
 	public String getCf() {
 		return cf;
 	}
+	public void setCf(String cf) { this.cf = cf;}
 	public String getTelefono() {
 		return telefono;
 	}
@@ -71,6 +75,4 @@ public class Utente {
 	public void setDataDiNascita(Date dataDiNascita) {
 		this.dataDiNascita = dataDiNascita;
 	}
-
-	
 }

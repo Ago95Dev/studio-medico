@@ -1,4 +1,4 @@
-package it.univaq.disim.isp.studiomedico.business.impl.jdbc;
+package it.univaq.disim.isp.studiomedico.business.impl;
 
 public class ConnessioneDB {
     private static final String DB_NAME = "studio_medico";
