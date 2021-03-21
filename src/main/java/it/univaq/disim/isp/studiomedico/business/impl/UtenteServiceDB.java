@@ -1,6 +1,6 @@
-package it.univaq.disim.isp.studiomedico.business.Implementations.db;
+package it.univaq.disim.isp.studiomedico.business.impl;
 
-import it.univaq.disim.isp.studiomedico.business.BusinessException;
+import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
 import it.univaq.disim.isp.studiomedico.business.UtenteService;
 import it.univaq.disim.isp.studiomedico.domain.Utente;
 

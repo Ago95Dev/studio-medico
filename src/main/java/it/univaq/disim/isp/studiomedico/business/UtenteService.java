@@ -1,5 +1,6 @@
 package it.univaq.disim.isp.studiomedico.business;
 
+import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
 import it.univaq.disim.isp.studiomedico.domain.Utente;
 
 public interface UtenteService {

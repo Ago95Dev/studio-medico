@@ -2,12 +2,14 @@ package it.univaq.disim.isp.studiomedico.domain;
 
 import java.util.Date;
 
-public abstract class Utente {
-	
+public class Utente {
+
 	private Integer id;
 	private String nome,cognome,cf,telefono,luogoDiNascita,email,password;
 	private Date dataDiNascita;
-	
+
+	public Utente(){}
+
 	public Utente(Integer id, String nome, String cognome, String cf, String telefono, String luogoDiNascita,
 			String email, String password, Date dataDiNascita) {
 		this.id = id;
