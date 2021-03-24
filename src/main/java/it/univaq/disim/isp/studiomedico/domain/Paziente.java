@@ -12,5 +12,9 @@ public class Paziente extends Utente{
 		super(id, nome, cognome, cf, telefono, luogoDiNascita, email, password, dataDiNascita);
 	}
 
-	//public Set<Prenotazione> getPrenotazioni() {}
+    public Paziente() {
+
+    }
+
+    //public Set<Prenotazione> getPrenotazioni() {}
 }

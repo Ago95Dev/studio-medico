@@ -1,4 +1,4 @@
-package it.univaq.disim.isp.studiomedico.business;
+package it.univaq.disim.isp.studiomedico.business.exceptions;
 
 public class BusinessException extends Exception {
 

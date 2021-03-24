@@ -3,6 +3,7 @@ package it.univaq.disim.isp.studiomedico.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import it.univaq.disim.isp.studiomedico.domain.Utente;
 import it.univaq.disim.isp.studiomedico.view.ViewDispatcher;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,36 +19,38 @@ public class LayoutController implements Initializable {
 
 	private static final MenuElement MENU_HOME = new MenuElement("Home", "home");
 
-	private static final MenuElement[] MENU_DOCENTI = { new MenuElement("Gestione Esami", "insegnamenti"),
-			new MenuElement("Approvazione Piani", "piani"), new MenuElement("Sedute Di Laurea", "sedute-laurea"),
-			new MenuElement("Laureandi Assegnati", "laureandi"), new MenuElement("Lezioni", "lezioni"),
-			new MenuElement("Diario", "diario"), new MenuElement("Conseguimento Titoli", "titoli"),
+	private static final MenuElement[] MENU_PAZIENTI = { new MenuElement("Prenotazione Visita", "prenotavisita"),
+			new MenuElement("Storico Visite", "storicovisite"), new MenuElement("Profilo Paziente", "profilopaziente"),
 			new MenuElement("Questionari", "questionari") };
+
 	@FXML
 	private VBox menuBar;
-	
-	private ViewDispatcher dispatcher;
+
+	private Utente utente;
+
+	//private ViewDispatcher dispatcher;
+	private ViewDispatcher manage;
 	
 	public LayoutController() {
-		dispatcher = ViewDispatcher.getInstance();
+		manage = ViewDispatcher.getInstance();
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		menuBar.getChildren().addAll(createButton(MENU_HOME));
 		menuBar.getChildren().add(new Separator());
-		for (MenuElement menu : MENU_DOCENTI) {
+		for (MenuElement menu : MENU_PAZIENTI) {
 			menuBar.getChildren().add(createButton(menu));
 		}
 	}
 
 	@FXML
 	public void esciAction(MouseEvent event) {
-		dispatcher.logout();
+		manage.logout();
 		
 	}
 
-	private Button createButton(MenuElement viewItem) {
+/*	private Button createButton(MenuElement viewItem) {
 		Button button = new Button(viewItem.getNome());
 		button.setStyle("-fx-background-color: transparent; -fx-font-size: 14;");
 		button.setTextFill(Paint.valueOf("white"));
@@ -60,6 +63,24 @@ public class LayoutController implements Initializable {
 			}
 		});
 		return button;
-	}
+	}*/
 
+	//inizializzazione del menù con i vari bottoni
+	private Button createButton(MenuElement viewItem) {
+
+		Button button = new Button(viewItem.getNome());
+		button.setStyle("-fx-background-color: transparent; -fx-font-size: 14;");
+		button.setTextFill(Paint.valueOf("white"));
+		button.setPrefHeight(10);
+		button.setPrefWidth(180);
+		button.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				manage.renderView(viewItem.getVista(), utente);
+
+			}
+		});
+		return button;
+	}
 }
