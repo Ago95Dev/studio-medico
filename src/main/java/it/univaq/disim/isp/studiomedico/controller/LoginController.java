@@ -65,10 +65,10 @@ public class LoginController implements Initializable, DataInitializable<Object>
 	private void loginAction(ActionEvent event) throws BusinessException, UtenteNotFoundException {
 		try {
 			Utente utente = utenteService.autenticazione(email.getText(), password.getText());
-			loginErrorLabel.setText("Username e/o password corretti!");
+			loginErrorLabel.setText("Email e/o password corretti!");
 			manage.loggedIn(utente);
 		} catch (UtenteNotFoundException e) {
-			loginErrorLabel.setText("Username e/o password errati!");
+			loginErrorLabel.setText("Email e/o password errati!");
 		} catch (BusinessException e) {
 			// e.printStackTrace();
 			manage.renderError(e);
