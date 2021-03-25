@@ -6,7 +6,9 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0"
             prefWidth="703.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/11.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="it.univaq.disim.isp.studiomedico.business.RegistrazioneController">
+
+            fx:controller="it.univaq.disim.isp.studiomedico.controller.RegistrazioneController">
+
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="35.0" prefHeight="39.0"
              prefWidth="170.0" text="Registrazione" textAlignment="CENTER" textFill="#000dff">
@@ -14,7 +16,9 @@
             <Font size="24.0"/>
          </font>
       </Label>
-      <Button fx:id="registraButton" layoutX="504.0" layoutY="438.0" mnemonicParsing="false" onAction="#registra"
+
+      <Button fx:id="registraButton" layoutX="504.0" layoutY="438.0" mnemonicParsing="false" onAction="#registrazioneAction"
+
               prefHeight="25.0" prefWidth="110.0" text="Registrati"/>
       <Label fx:id="loginErrorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="193.0" layoutY="277.0"
              prefHeight="39.0" prefWidth="317.0" textAlignment="CENTER" textFill="WHITE">
@@ -27,7 +31,9 @@
                  text="it.univaq.disim.isp.studiomedico.business.controller.RegistrazioneController"/>
       <Label fx:id="NomeLabel" layoutX="99.0" layoutY="150.0" text="Nome "/>
       <Label layoutX="79.0" layoutY="201.0" text="Cognome "/>
-      <Button fx:id="registraButton1" layoutX="125.0" layoutY="438.0" mnemonicParsing="false" onAction="#registra"
+
+      <Button fx:id="registraButton1" layoutX="125.0" layoutY="438.0" mnemonicParsing="false" onAction="#registrazioneAction"
+
               prefHeight="25.0" prefWidth="110.0" text="Annulla"/>
       <Label layoutX="79.0" layoutY="252.0" text="Luogo nascita"/>
       <TextField fx:id="CognomeTextField" layoutX="159.0" layoutY="196.0"
