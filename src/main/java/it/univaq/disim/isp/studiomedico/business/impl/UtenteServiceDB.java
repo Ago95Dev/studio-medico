@@ -111,6 +111,7 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
     }
 
     // errore nell'inserimento della specializzazione. nel nostro db è un id che fa riferimento in un'altra tabella, non è una stringa
+    // aggiungere la query che ritorna l'id_specializzazione da aggiungere nell'insert del medico
     public Utente registrazioneMedico(String password, String nome, String cognome, String codicef, String email, String telefono, String data, String luogo, Specializzazione specializzazione) throws BusinessException {
         Utente utente = null;
         String query = "insert into utenti(password,nome,cognome,codice_fiscale,email,telefono,data_di_nascita,luogo_di_nascita,specializzazione)" + "values(?,?,?,?,?,?,?,?,?)";
