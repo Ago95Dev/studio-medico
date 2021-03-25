@@ -1,33 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="703.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.Registrationcontroller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0"
+            prefWidth="703.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="it.univaq.disim.isp.studiomedico.business.RegistrazioneController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="35.0" prefHeight="39.0" prefWidth="170.0" text="Registrazione" textAlignment="CENTER" textFill="#000dff">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="35.0" prefHeight="39.0"
+             prefWidth="170.0" text="Registrazione" textAlignment="CENTER" textFill="#000dff">
          <font>
-            <Font size="24.0" />
+            <Font size="24.0"/>
          </font>
       </Label>
-      <Button fx:id="registraButton" layoutX="504.0" layoutY="438.0" mnemonicParsing="false" onAction="#registra" prefHeight="25.0" prefWidth="110.0" text="Registrati" />
-      <Label fx:id="loginErrorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="193.0" layoutY="277.0" prefHeight="39.0" prefWidth="317.0" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="registraButton" layoutX="504.0" layoutY="438.0" mnemonicParsing="false" onAction="#registra"
+              prefHeight="25.0" prefWidth="110.0" text="Registrati"/>
+      <Label fx:id="loginErrorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="193.0" layoutY="277.0"
+             prefHeight="39.0" prefWidth="317.0" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font size="14.0"/>
          </font>
       </Label>
-      <TextField fx:id="NomeTextField" layoutX="159.0" layoutY="145.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
-      <Label fx:id="NomeLabel" layoutX="99.0" layoutY="150.0" text="Nome " />
-      <Label layoutX="79.0" layoutY="201.0" text="Cognome " />
-      <Button fx:id="registraButton1" layoutX="125.0" layoutY="438.0" mnemonicParsing="false" onAction="#registra" prefHeight="25.0" prefWidth="110.0" text="Annulla" />
-      <Label layoutX="79.0" layoutY="252.0" text="Cognome " />
-      <TextField layoutX="159.0" layoutY="196.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
-      <TextField layoutX="159.0" layoutY="247.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
-      <TextField layoutX="417.0" layoutY="145.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
-      <TextField layoutX="417.0" layoutY="196.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
-      <TextField layoutX="417.0" layoutY="247.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
+      <TextField fx:id="NomeTextField" layoutX="159.0" layoutY="145.0"
+                 style="-fx-border-width: 0.5; -fx-border-color: #000000;"
+                 text="it.univaq.disim.isp.studiomedico.business.controller.RegistrazioneController"/>
+      <Label fx:id="NomeLabel" layoutX="99.0" layoutY="150.0" text="Nome "/>
+      <Label layoutX="79.0" layoutY="201.0" text="Cognome "/>
+      <Button fx:id="registraButton1" layoutX="125.0" layoutY="438.0" mnemonicParsing="false" onAction="#registra"
+              prefHeight="25.0" prefWidth="110.0" text="Annulla"/>
+      <Label layoutX="79.0" layoutY="252.0" text="Luogo nascita"/>
+      <TextField fx:id="CognomeTextField" layoutX="159.0" layoutY="196.0"
+                 style="-fx-border-width: 0.5; -fx-border-color: #000000;" text="CognomeTextField"/>
+      <TextField fx:id="LuogoTextField" layoutX="159.0" layoutY="247.0"
+                 style="-fx-border-width: 0.5; -fx-border-color: #000000;" text="LuogoTextField"/>
+      <TextField fx:id="EmailTextField" layoutX="417.0" layoutY="145.0"
+                 style="-fx-border-width: 0.5; -fx-border-color: #000000;" text="EmailTextField"/>
+      <TextField fx:id="CodiceFiscaleTextField" layoutX="417.0" layoutY="196.0"
+                 style="-fx-border-width: 0.5; -fx-border-color: #000000;" text="CodiceFiscaleTextField"/>
+      <Label layoutX="332.0" layoutY="150.0" text="Email"/>
+      <Label layoutX="332.0" layoutY="201.0" text="Codice Fiscale"/>
+      <Label layoutX="332.0" layoutY="252.0" text="Data Nascita"/>
+      <DatePicker fx:id="Data" layoutX="417.0" layoutY="248.0" prefHeight="26.0" prefWidth="151.0"/>
+      <TextField fx:id="PasswordTextField" layoutX="159.0" layoutY="297.0"
+                 style="-fx-border-width: 0.5; -fx-border-color: #000000;" text="PasswordTextField"/>
+      <TextField fx:id="CPasswordTextField" layoutX="159.0" layoutY="335.0"
+                 style="-fx-border-width: 0.5; -fx-border-color: #000000;" text="CPasswordTextField"/>
+      <Label layoutX="79.0" layoutY="302.0" text="Password"/>
+      <Label layoutX="29.0" layoutY="340.0" text="Conferma Password"/>
+      <Label layoutX="314.0" layoutY="302.0" text="Numero Telefono"/>
+      <TextField fx:id="TelefonoTextField" layoutX="417.0" layoutY="297.0"
+                 style="-fx-border-width: 0.5; -fx-border-color: #000000;" text="TelefonoTextField"/>
    </children>
 </AnchorPane>

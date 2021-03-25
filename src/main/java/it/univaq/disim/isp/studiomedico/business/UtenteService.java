@@ -7,8 +7,8 @@ public interface UtenteService {
 
     Utente autenticazione(String email, String password) throws BusinessException;
 
-    Utente registrazione(String username, String password, String nomeu, String cognomeu, String codicef, String email, String ruolo) throws BusinessException;
 
+    Utente registrazione(String password, String nome, String cognome, String codicef, String email, String telefono, String data, String luogo) throws BusinessException;
 }
 
 

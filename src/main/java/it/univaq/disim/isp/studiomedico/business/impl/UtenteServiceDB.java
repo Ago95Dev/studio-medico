@@ -1,11 +1,9 @@
 package it.univaq.disim.isp.studiomedico.business.impl;
 
-import it.univaq.disim.isp.studiomedico.business.exceptions.*;
 import it.univaq.disim.isp.studiomedico.business.UtenteService;
-import it.univaq.disim.isp.studiomedico.domain.Medico;
-import it.univaq.disim.isp.studiomedico.domain.Paziente;
-import it.univaq.disim.isp.studiomedico.domain.Segretaria;
-import it.univaq.disim.isp.studiomedico.domain.Utente;
+import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
+import it.univaq.disim.isp.studiomedico.business.exceptions.UtenteNotFoundException;
+import it.univaq.disim.isp.studiomedico.domain.*;
 
 import java.sql.*;
 import java.util.Objects;
@@ -63,7 +61,53 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
     }
 
     @Override
-    public Utente registrazione(String username, String password, String nomeu, String cognomeu, String codicef, String email, String ruolo) throws BusinessException {
-        return null;
+    public Utente registrazione(String password, String nome, String cognome, String codicef, String email, String telefono, String data, String luogo) throws BusinessException {
+        Utente utente = null;
+        String query = "insert into utente(password,nome,cognome,codicef,email,telefono,data,luogo)" + "values(?,?,?,?,?,?,?,?)";
+        String query2 = "select * from utente where codicef=?";
+
+        try (PreparedStatement st = con.prepareStatement(query)) {
+
+            st.setString(1, password);
+            st.setString(2, nome);
+            st.setString(3, cognome);
+            st.setString(4, codicef);
+            st.setString(5, email);
+            st.setString(6, String.valueOf(data));
+
+            int res = st.executeUpdate();
+
+
+            try (PreparedStatement s1 = con.prepareStatement(query2)) {
+
+                s1.setString(1, codicef);
+
+
+                try (ResultSet rs = s1.executeQuery()) {
+                    while (rs.next()) {
+                        utente = new Paziente();
+                        utente.setId(rs.getInt("Id"));
+                        utente.setEmail(email);
+                        utente.setCf(codicef);
+                        utente.setRuolo(Ruolo.paziente);
+                        utente.setNome(nome);
+                        utente.setCognome(cognome);
+                        utente.setPassword(password);
+                        utente.setDataDiNascita(Date.valueOf(data));
+                        utente.setLuogoDiNascita(luogo);
+                        utente.setTelefono(telefono);
+
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    throw new UtenteNotFoundException("Errore esecuzione query", e);
+                }
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return utente;
     }
 }
+

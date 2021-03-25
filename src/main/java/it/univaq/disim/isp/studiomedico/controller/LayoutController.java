@@ -1,8 +1,8 @@
 package it.univaq.disim.isp.studiomedico.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
+import it.univaq.disim.isp.studiomedico.domain.Medico;
+import it.univaq.disim.isp.studiomedico.domain.Paziente;
+import it.univaq.disim.isp.studiomedico.domain.Segretaria;
 import it.univaq.disim.isp.studiomedico.domain.Utente;
 import it.univaq.disim.isp.studiomedico.view.ViewDispatcher;
 import javafx.event.ActionEvent;
@@ -15,13 +15,27 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 
-public class LayoutController implements Initializable {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class LayoutController implements Initializable, DataInitializable<Utente> {
 
 	private static final MenuElement MENU_HOME = new MenuElement("Home", "home");
 
-	private static final MenuElement[] MENU_PAZIENTI = { new MenuElement("Prenotazione Visita", "prenotavisita"),
-			new MenuElement("Storico Visite", "storicovisite"), new MenuElement("Profilo Paziente", "profilopaziente"),
-			new MenuElement("Questionari", "questionari") };
+	private static final MenuElement[] MENU_PAZIENTI = {
+			new MenuElement("Prenotazione Visita", "prenotavisita"),
+			new MenuElement("Storico Visite", "storicovisite"),
+			new MenuElement("Profilo Paziente", "profilopaziente"),
+			new MenuElement("Questionari", "questionari")};
+	private static final MenuElement[] MENU_MEDICI = {
+			new MenuElement("Prenotazione Visita", "prenotavisita"),
+			new MenuElement("Storico Visite", "storicovisite"),
+			new MenuElement("Profilo Medico", "profilomedico"),};
+	private static final MenuElement[] MENU_SEGRETERIA = {
+			new MenuElement("Prenotazione Visita", "prenotavisita"),
+			new MenuElement("Gestione turni", "gestioneturni"),
+			new MenuElement("Gestisci utenti", "gestioneutenti"),
+	};
 
 	@FXML
 	private VBox menuBar;
@@ -30,17 +44,38 @@ public class LayoutController implements Initializable {
 
 	//private ViewDispatcher dispatcher;
 	private ViewDispatcher manage;
-	
+
 	public LayoutController() {
 		manage = ViewDispatcher.getInstance();
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+	}
+
+	@Override
+	public void initializeData(Utente utente) {
+
+		this.utente = utente;
 		menuBar.getChildren().addAll(createButton(MENU_HOME));
 		menuBar.getChildren().add(new Separator());
-		for (MenuElement menu : MENU_PAZIENTI) {
-			menuBar.getChildren().add(createButton(menu));
+		if (utente instanceof Segretaria) {
+			for (MenuElement menu : MENU_SEGRETERIA) {
+				menuBar.getChildren().add(createButton(menu));
+				menuBar.getChildren().add(new Separator());
+			}
+		}
+		if (utente instanceof Paziente) {
+			for (MenuElement menu : MENU_PAZIENTI) {
+				menuBar.getChildren().add(createButton(menu));
+				menuBar.getChildren().add(new Separator());
+			}
+		}
+		if (utente instanceof Medico) {
+			for (MenuElement menu : MENU_MEDICI) {
+				menuBar.getChildren().add(createButton(menu));
+				menuBar.getChildren().add(new Separator());
+			}
 		}
 	}
 

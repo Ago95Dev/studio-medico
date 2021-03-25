@@ -12,7 +12,7 @@
 
 <BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.LayoutController">
    <left>
-      <VBox fx:id="menuBar" prefHeight="440.0" prefWidth="164.0" style="-fx-background-color: #cccccc;" BorderPane.alignment="CENTER_LEFT" />
+      <VBox fx:id="menuBar" prefHeight="440.0" prefWidth="164.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER_LEFT" />
    </left>
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="600.0" spacing="10.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">

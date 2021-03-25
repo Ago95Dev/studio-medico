@@ -5,11 +5,26 @@ import java.util.Date;
 public class Utente {
 
 	private Integer Id;
-	private String nome,cognome,cf,telefono,luogoDiNascita,email,password;
+	private String nome;
+	private String cognome;
+	private String cf;
+	private String telefono;
+	private String luogoDiNascita;
+	private String email;
+	private String password;
 	private Date dataDiNascita;
+	private Enum ruolo;
 
-	public Utente(){}
+	public Enum getRuolo() {
+		return ruolo;
+	}
 
+	public void setRuolo(Enum ruolo) {
+		this.ruolo = ruolo;
+	}
+
+	public Utente() {
+	}
 
 
 	public Utente(Integer id, String nome, String cognome, String cf, String telefono, String luogoDiNascita,
