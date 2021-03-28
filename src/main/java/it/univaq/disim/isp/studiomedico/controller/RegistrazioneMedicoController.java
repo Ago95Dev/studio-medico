@@ -8,10 +8,8 @@ import it.univaq.disim.isp.studiomedico.view.ViewDispatcher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -19,6 +17,10 @@ import javafx.collections.ObservableList;
 
 public class RegistrazioneMedicoController<listaspecializzazioni> implements Initializable, DataInitializable<Utente>{
 
+    @FXML
+    public Label NomeLabel;
+    @FXML
+    public Label registerErrorLabel;
     @FXML
     private TextField CodiceFiscaleTextField;
     @FXML
@@ -40,6 +42,9 @@ public class RegistrazioneMedicoController<listaspecializzazioni> implements Ini
     @FXML
     private ChoiceBox SpecializzazioneChoiceBox;
     @FXML
+    private ChoiceBox ContrattoChoiceBox;
+
+    @FXML
     private Button registraButton;
     @FXML
     private Button annullaButton;
@@ -51,6 +56,8 @@ public class RegistrazioneMedicoController<listaspecializzazioni> implements Ini
     private final UtenteService utenteservice;
 
     protected ObservableList<String> listaspecializzazioni = FXCollections.observableArrayList("FISIOTERAPIA", "NUTRIZIONISTA", "CARDIOLOGIA","SENOLOGIA","OTORINOLARINGOIATRIA","ORTOPEDIA","UROLOGIA","NEUROLOGIA","GASTROENTEROLOGIA","ONCOLOGIA","NEUROCHIRURGIA","MEDICINAINTERNA","GINECOLOGIA","PSICOLOGIA","CHIRURGIAVASCOLARE","OSTETRICIA","ANDROLOGIA","TRAUMATOLOGIA");
+    protected ObservableList<String> listacontratti = FXCollections.observableArrayList("FORFETTARIO", "PRESENZE", "PRESTAZIONI");
+
 
     public RegistrazioneMedicoController() {
         manage = ViewDispatcher.getInstance();
@@ -65,12 +72,17 @@ public class RegistrazioneMedicoController<listaspecializzazioni> implements Ini
     }
 
     // registrazione utente
-/*    public void registrazioneMedicoAction(ActionEvent event) throws BusinessException {
+    public void registrazioneMedicoAction(ActionEvent event) throws BusinessException {
 
-        medico = utenteservice.registrazioneMedico(PasswordTextField.getText(), NomeTextField.getText(), CognomeTextField.getText(), CodiceFiscaleTextField.getText(), EmailTextField.getText(), TelefonoTextField.getText(), String.valueOf(Data), LuogoTextField.getText(), (String) SpecializzazioneChoiceBox.getValue());
+        medico = utenteservice.registrazioneMedico(PasswordTextField.getText(), NomeTextField.getText(), CognomeTextField.getText(), CodiceFiscaleTextField.getText(), EmailTextField.getText(), TelefonoTextField.getText(), Data.getValue().toString(), LuogoTextField.getText(), (String) SpecializzazioneChoiceBox.getValue(), (String) ContrattoChoiceBox.getValue());
 
 
         manage.logout();
-    }*/
+    }
 
+    public void annullaAction(ActionEvent actionEvent) {
+    }
+
+    public void registrazioneAction(ActionEvent actionEvent) {
+    }
 }

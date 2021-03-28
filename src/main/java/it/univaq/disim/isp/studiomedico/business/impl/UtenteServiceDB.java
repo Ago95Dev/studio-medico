@@ -117,10 +117,11 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
 
     // errore nell'inserimento della specializzazione. nel nostro db è un id che fa riferimento in un'altra tabella, non è una stringa
     // aggiungere la query che ritorna l'id_specializzazione da aggiungere nell'insert del medico
-/*    public Utente registrazioneMedico(String password, String nome, String cognome, String codicef, String email, String telefono, String data, String luogo, Specializzazione specializzazione) throws BusinessException {
+    public Utente registrazioneMedico(String password, String nome, String cognome, String codicef, String email, String telefono, String data, String luogo, String specializzazione, String contratto) throws BusinessException {
         Utente utente = null;
-        String query = "insert into utenti(password,nome,cognome,codice_fiscale,email,telefono,data_di_nascita,luogo_di_nascita,specializzazione)" + "values(?,?,?,?,?,?,?,?,?)";
+        String query = "insert into utenti(password,nome,cognome,codice_fiscale,email,telefono,data_di_nascita,luogo_di_nascita,id_specializzazione,id_contratto)" + "values(?,?,?,?,?,?,?,?,?,?)";
         String query2 = "select * from utenti where codice_fiscale=?";
+
 
         try (PreparedStatement st = con.prepareStatement(query)) {
 
@@ -129,8 +130,11 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
             st.setString(3, cognome);
             st.setString(4, codicef);
             st.setString(5, email);
-            st.setString(6, String.valueOf(data));
-            st.setString(7, String.valueOf(specializzazione));
+            st.setString(6, telefono);
+            st.setDate(7, Date.valueOf(data));
+            st.setString(8, luogo);
+            st.setInt(9, findIdSpecializzazione(specializzazione));
+            st.setInt(10, findIdContratto(contratto));
             int res = st.executeUpdate();
 
 
@@ -152,7 +156,7 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
                         utente.setDataDiNascita(Date.valueOf(data));
                         utente.setLuogoDiNascita(luogo);
                         utente.setTelefono(telefono);
-                        ((Medico) utente).setSpecializzazione(specializzazione);
+                        ((Medico) utente).setSpecializzazione(Specializzazione.valueOf(specializzazione));
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -164,5 +168,45 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
             throwables.printStackTrace();
         }
         return utente;
-    }*/
+    }
+
+    public int findIdContratto(String contratto) throws BusinessException{
+        String query = "select * from contratti where tipologia_contratto=?";
+        Integer idContratto = null;
+        try(PreparedStatement st = con.prepareStatement(query)){
+            st.setString(1,contratto);
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()){
+                    idContratto = rs.getInt("id");
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                throw new BusinessException("Errore esecuzione query", e);
+            }
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return idContratto;
+    }
+
+    public int findIdSpecializzazione(String specializzazione) throws BusinessException{
+        String query = "select * from specializzazioni where tipologia=?";
+        Integer idSpecializzazione = null;
+        try(PreparedStatement st = con.prepareStatement(query)){
+            st.setString(1,specializzazione.toString());
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()){
+                    idSpecializzazione = rs.getInt("id");
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                throw new BusinessException("Errore esecuzione query", e);
+            }
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return idSpecializzazione;
+    }
 }
