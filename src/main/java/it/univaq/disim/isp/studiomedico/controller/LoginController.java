@@ -3,8 +3,6 @@ package it.univaq.disim.isp.studiomedico.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
 import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
 import it.univaq.disim.isp.studiomedico.business.exceptions.UtenteNotFoundException;
 import it.univaq.disim.isp.studiomedico.business.StudioMedicoBusinessFactory;
@@ -16,12 +14,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 
 //classe LoginController che implementa Initializable e DataInitializable>Object>
 public class LoginController implements Initializable, DataInitializable<Object> {
 
-	//componenti
+	@FXML
+	public Button Registrazione;
+
 	@FXML
 	private TextField email;
 
@@ -78,7 +77,7 @@ public class LoginController implements Initializable, DataInitializable<Object>
 
 	//action per la registrazione dell'utente
 	@FXML
-	public void registraAction(MouseEvent mouseEvent) throws ViewException {
+	public void registraAction(ActionEvent mouseEvent) throws ViewException {
 		Utente utente = new Utente();
 		manage.registraView(utente);
 	}

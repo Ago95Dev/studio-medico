@@ -21,7 +21,7 @@
                </font>
             </Text>
             <Separator orientation="VERTICAL" prefHeight="87.0" prefWidth="462.0" visible="false" />
-            <ImageView fx:id="esciButton" fitHeight="21.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="esciButton" fitHeight="21.0" fitWidth="39.0"  onMouseClicked="#esciAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logout.png" />
                </image>

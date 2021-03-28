@@ -65,12 +65,12 @@ public class RegistrazioneMedicoController<listaspecializzazioni> implements Ini
     }
 
     // registrazione utente
-    public void registrazioneMedicoAction(ActionEvent event) throws BusinessException {
+/*    public void registrazioneMedicoAction(ActionEvent event) throws BusinessException {
 
         medico = utenteservice.registrazioneMedico(PasswordTextField.getText(), NomeTextField.getText(), CognomeTextField.getText(), CodiceFiscaleTextField.getText(), EmailTextField.getText(), TelefonoTextField.getText(), String.valueOf(Data), LuogoTextField.getText(), (String) SpecializzazioneChoiceBox.getValue());
 
 
         manage.logout();
-    }
+    }*/
 
 }

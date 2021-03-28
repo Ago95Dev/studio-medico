@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="703.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.RegistrazioneController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="35.0" prefHeight="39.0" prefWidth="170.0" text="Registrazione" textAlignment="CENTER" textFill="#000dff">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="registraButton" layoutX="504.0" layoutY="438.0" mnemonicParsing="false" onAction="#registrazioneAction" prefHeight="25.0" prefWidth="110.0" text="Registrati" />
+      <TextField fx:id="NomeTextField" layoutX="159.0" layoutY="145.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
+      <Label fx:id="NomeLabel" layoutX="117.0" layoutY="150.0" text="Nome " />
+      <Label layoutX="97.0" layoutY="201.0" text="Cognome " />
+      <Button fx:id="annullaButton" layoutX="125.0" layoutY="438.0" mnemonicParsing="false" onAction="#annullaAction" prefHeight="25.0" prefWidth="110.0" text="Annulla" />
+      <Label layoutX="79.0" layoutY="252.0" text="Luogo nascita" />
+      <TextField fx:id="CognomeTextField" layoutX="159.0" layoutY="196.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
+      <TextField fx:id="LuogoTextField" layoutX="159.0" layoutY="247.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
+      <TextField fx:id="EmailTextField" layoutX="417.0" layoutY="145.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
+      <TextField fx:id="CodiceFiscaleTextField" layoutX="417.0" layoutY="196.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
+      <Label layoutX="376.0" layoutY="150.0" text="Email" />
+      <Label layoutX="339.0" layoutY="201.0" text="Codice Fiscale" />
+      <Label layoutX="343.0" layoutY="252.0" text="Data Nascita" />
+      <DatePicker fx:id="Data" layoutX="417.0" layoutY="248.0" prefHeight="26.0" prefWidth="151.0" />
+      <TextField fx:id="PasswordTextField" layoutX="159.0" layoutY="297.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
+      <TextField fx:id="CPasswordTextField" layoutX="159.0" layoutY="344.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
+      <Label layoutX="100.0" layoutY="302.0" text="Password" />
+      <Label layoutX="47.0" layoutY="349.0" text="Conferma Password" />
+      <Label layoutX="320.0" layoutY="302.0" text="Numero Telefono" />
+      <TextField fx:id="TelefonoTextField" layoutX="417.0" layoutY="297.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
+      <Label fx:id="registerErrorLabel" layoutX="266.0" layoutY="393.0" text="Le Password inserite non combaciano!" textFill="#eb0000" />
+   </children>
+</AnchorPane>
