@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -39,6 +40,8 @@
       <Label layoutX="367.0" layoutY="356.0" text="Ora Inizio:" />
       <Label layoutX="493.0" layoutY="356.0" text="Ora Fine:" />
       <Label layoutX="378.0" layoutY="310.0" text="Turno:" />
-      <DatePicker layoutX="418.0" layoutY="306.0" prefHeight="25.0" prefWidth="151.0" />
+      <JFXDatePicker fx:id="DatePickerTurno" layoutX="436.0" layoutY="305.0" prefHeight="28.0" prefWidth="151.0" />
+      <JFXTimePicker fx:id="TimePickerOraInizio" layoutX="422.0" layoutY="345.0" prefHeight="39.0" prefWidth="70.0" />
+      <JFXTimePicker fx:id="TimePickerOraFine" layoutX="541.0" layoutY="345.0" prefHeight="39.0" prefWidth="70.0" />
     </children>
 </AnchorPane>

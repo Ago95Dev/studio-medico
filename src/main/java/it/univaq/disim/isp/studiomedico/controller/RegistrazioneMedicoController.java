@@ -1,5 +1,8 @@
 package it.univaq.disim.isp.studiomedico.controller;
 
+
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTimePicker;
 import it.univaq.disim.isp.studiomedico.business.StudioMedicoBusinessFactory;
 import it.univaq.disim.isp.studiomedico.business.UtenteService;
 import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
@@ -21,6 +24,12 @@ public class RegistrazioneMedicoController<listaspecializzazioni> implements Ini
     public Label NomeLabel;
     @FXML
     public Label registerErrorLabel;
+    @FXML
+    public JFXTimePicker TimePickerOraFine;
+    @FXML
+    public JFXTimePicker TimePickerOraInizio;
+    @FXML
+    public JFXDatePicker DatePickerTurno;
     @FXML
     private TextField CodiceFiscaleTextField;
     @FXML

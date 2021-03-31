@@ -72,7 +72,9 @@ public class RegistrazioneController implements Initializable, DataInitializable
     public void initialize(URL location, ResourceBundle resources) {
         registerErrorLabel.setVisible(false);
         registraButton.disableProperty()
-                .bind(CodiceFiscaleTextField.textProperty().isEmpty().or(NomeTextField.textProperty().isEmpty()).or(CognomeTextField.textProperty().isEmpty()));
+                .bind(CodiceFiscaleTextField.textProperty().isEmpty().or(NomeTextField.textProperty().isEmpty()).or(CognomeTextField.textProperty().isEmpty())
+                .or(PasswordTextField.textProperty().isEmpty()).or(CPasswordTextField.textProperty().isEmpty()).or(TelefonoTextField.textProperty().isEmpty())
+                .or(LuogoTextField.textProperty().isEmpty()).or(Data.valueProperty().isNull()));
 
     }
 

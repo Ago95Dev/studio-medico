@@ -51,6 +51,16 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
                     utente.setNome(rs.getString("nome"));
                     utente.setCognome(rs.getString("cognome"));
                     utente.setPassword("password");
+                    utente.setTelefono(rs.getString("telefono"));
+                    utente.setLuogoDiNascita(rs.getString("luogo_di_nascita"));
+                    utente.setDataDiNascita(rs.getDate("data_di_nascita"));
+                    if (utente instanceof Medico){
+                        ((Medico) utente).setSpecializzazione(findSpecializzazionebyId(rs.getInt("id_specializzazione")));
+                        ((Medico) utente).setContratto(findContrattobyId(rs.getInt("id_contratto")));
+                        //medico.setListaTurni("query su turni in base al medico");
+                        ((Medico) utente).setNumeropresenze(rs.getInt("numeropresenze"));
+                        ((Medico) utente).setNumerovisite(rs.getInt("numeroprestazioni"));
+                    }
                 }
             }
         } catch (SQLException e) {
@@ -59,6 +69,59 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
         if (utente != null)
             return utente;
         throw new UtenteNotFoundException();
+    }
+
+
+    private Contratto findContrattobyId(int id_contratto) {
+        String query = "select * from contratti where id=?";
+        Contratto contratto = new Contratto();
+        try(PreparedStatement st = con.prepareStatement(query)){
+            st.setInt(1,id_contratto);
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()){
+                    contratto.setId(rs.getInt("id"));
+                    switch (rs.getString("tipologia_contratto")) {
+                        case "forfettario":
+                            contratto.setTipo(TipologiaContratto.FORFETTARIO);
+                            break;
+                        case "presenze":
+                            contratto.setTipo(TipologiaContratto.PRESENZE);
+                            break;
+                        case "prestazioni":
+                            contratto.setTipo(TipologiaContratto.PRESTAZIONI);
+                            break;
+                    }
+                    contratto.setQuota(rs.getFloat("quota"));
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                throw new BusinessException("Errore esecuzione query", e);
+            }
+        }catch (SQLException | BusinessException throwables) {
+            throwables.printStackTrace();
+        }
+        return  contratto;
+    }
+
+    private Specializzazione findSpecializzazionebyId(int id_specializzazione) {
+        String query = "select * from specializzazioni where id=?";
+        Specializzazione specializzazione = null;
+        try(PreparedStatement st = con.prepareStatement(query)){
+            st.setInt(1,id_specializzazione);
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()){
+                   specializzazione = Specializzazione.valueOf(rs.getString("tipologia"));
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                throw new BusinessException("Errore esecuzione query", e);
+            }
+        }catch (SQLException | BusinessException throwables) {
+            throwables.printStackTrace();
+        }
+        return specializzazione;
     }
 
     @Override
