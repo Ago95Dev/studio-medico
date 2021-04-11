@@ -39,7 +39,7 @@ public class RegistrazioneMedicoController<listaspecializzazioni> implements Ini
     @FXML
     private DatePicker Data;
     @FXML
-    private TextField PasswordTextField;
+    private PasswordField PasswordTextField;
     @FXML
     private TextField EmailTextField;
     @FXML
@@ -47,7 +47,7 @@ public class RegistrazioneMedicoController<listaspecializzazioni> implements Ini
     @FXML
     private TextField TelefonoTextField;
     @FXML
-    private TextField CPasswordTextField;
+    private PasswordField CPasswordTextField;
     @FXML
     private ChoiceBox SpecializzazioneChoiceBox;
     @FXML
@@ -64,8 +64,8 @@ public class RegistrazioneMedicoController<listaspecializzazioni> implements Ini
     private final ViewDispatcher manage;
     private final UtenteService utenteservice;
 
-    protected ObservableList<String> listaspecializzazioni = FXCollections.observableArrayList("FISIOTERAPIA", "NUTRIZIONISTA", "CARDIOLOGIA","SENOLOGIA","OTORINOLARINGOIATRIA","ORTOPEDIA","UROLOGIA","NEUROLOGIA","GASTROENTEROLOGIA","ONCOLOGIA","NEUROCHIRURGIA","MEDICINAINTERNA","GINECOLOGIA","PSICOLOGIA","CHIRURGIAVASCOLARE","OSTETRICIA","ANDROLOGIA","TRAUMATOLOGIA");
-    protected ObservableList<String> listacontratti = FXCollections.observableArrayList("FORFETTARIO", "PRESENZE", "PRESTAZIONI");
+    protected ObservableList<String> listaspecializzazioni = FXCollections.observableArrayList("Fisioterapia", "Nutrizionista", "Cardiologia","Senologia","Otorinolaringoiatria","Ortopedia","Urologia","Neurologia","Gastroenterologia","Oncologia","Neurochirurgia","MedicinaInterna","Ginecologia","Psicologia","ChirurgiaVascolare","Ostetricia","Andrologia","Traumatologia");
+    protected ObservableList<String> listacontratti = FXCollections.observableArrayList("Forfettario", "Presenze", "Prestazioni");
 
 
     public RegistrazioneMedicoController() {
@@ -77,21 +77,24 @@ public class RegistrazioneMedicoController<listaspecializzazioni> implements Ini
     public void initialize(URL location, ResourceBundle resources) {
         registraButton.disableProperty()
                 .bind(CodiceFiscaleTextField.textProperty().isEmpty().or(NomeTextField.textProperty().isEmpty()).or(CognomeTextField.textProperty().isEmpty()));
-        SpecializzazioneChoiceBox.setItems(listaspecializzazioni) ;
+        SpecializzazioneChoiceBox.setItems(listaspecializzazioni);
+        ContrattoChoiceBox.setItems(listacontratti);
     }
 
-    // registrazione utente
-    public void registrazioneMedicoAction(ActionEvent event) throws BusinessException {
 
-        medico = utenteservice.registrazioneMedico(PasswordTextField.getText(), NomeTextField.getText(), CognomeTextField.getText(), CodiceFiscaleTextField.getText(), EmailTextField.getText(), TelefonoTextField.getText(), Data.getValue().toString(), LuogoTextField.getText(), (String) SpecializzazioneChoiceBox.getValue(), (String) ContrattoChoiceBox.getValue());
-
-
-        manage.logout();
+    @FXML
+    public void registrazioneAction(ActionEvent event) throws BusinessException {
+        if (CPasswordTextField.getText().equals(PasswordTextField.getText())) {
+            medico = utenteservice.registrazioneMedico(PasswordTextField.getText(), NomeTextField.getText(), CognomeTextField.getText(), CodiceFiscaleTextField.getText(), EmailTextField.getText(), TelefonoTextField.getText(), Data.getValue().toString(), LuogoTextField.getText(), (String) SpecializzazioneChoiceBox.getValue(), (String) ContrattoChoiceBox.getValue(), DatePickerTurno.getValue().toString(), TimePickerOraInizio.getValue().toString(), TimePickerOraFine.getValue().toString());
+        }
+        else {
+            registerErrorLabel.setVisible(true);
+            registerErrorLabel.setText("Le password inserite non combaciano!");
+        }
     }
 
     public void annullaAction(ActionEvent actionEvent) {
     }
 
-    public void registrazioneAction(ActionEvent actionEvent) {
-    }
+
 }

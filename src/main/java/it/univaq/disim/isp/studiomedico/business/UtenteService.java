@@ -12,7 +12,7 @@ public interface UtenteService {
 
     Utente registrazione(String password, String nome, String cognome, String codicef, String email, String telefono, String data, String luogo) throws BusinessException;
 
-    Utente registrazioneMedico(String password, String nome, String cognome, String codicef, String email, String telefono, String data, String luogo, String specializzazione, String Contratto) throws BusinessException;
+    Utente registrazioneMedico(String password, String nome, String cognome, String codicef, String email, String telefono, String data, String luogo, String specializzazione, String Contratto, String turno, String oraInizio, String oraFine) throws BusinessException;
 }
 
 

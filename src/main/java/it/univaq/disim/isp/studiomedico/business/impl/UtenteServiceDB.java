@@ -4,10 +4,13 @@ import it.univaq.disim.isp.studiomedico.business.UtenteService;
 import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
 import it.univaq.disim.isp.studiomedico.business.exceptions.UtenteNotFoundException;
 import it.univaq.disim.isp.studiomedico.domain.*;
+import javafx.util.converter.DateTimeStringConverter;
 
 import java.sql.*;
-import java.util.Objects;
 
+import java.time.format.DateTimeFormatter;
+import java.util.Objects;
+import java.util.Timer;
 
 
 public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
@@ -57,7 +60,7 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
                     if (utente instanceof Medico){
                         ((Medico) utente).setSpecializzazione(findSpecializzazionebyId(rs.getInt("id_specializzazione")));
                         ((Medico) utente).setContratto(findContrattobyId(rs.getInt("id_contratto")));
-                        //medico.setListaTurni("query su turni in base al medico");
+                       //((Medico) utente).setListaTurni("query su turni in base al medico");
                         ((Medico) utente).setNumeropresenze(rs.getInt("numeropresenze"));
                         ((Medico) utente).setNumerovisite(rs.getInt("numeroprestazioni"));
                     }
@@ -82,13 +85,13 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
                     contratto.setId(rs.getInt("id"));
                     switch (rs.getString("tipologia_contratto")) {
                         case "forfettario":
-                            contratto.setTipo(TipologiaContratto.FORFETTARIO);
+                            contratto.setTipo(TipologiaContratto.Forfettario);
                             break;
                         case "presenze":
-                            contratto.setTipo(TipologiaContratto.PRESENZE);
+                            contratto.setTipo(TipologiaContratto.Presenze);
                             break;
                         case "prestazioni":
-                            contratto.setTipo(TipologiaContratto.PRESTAZIONI);
+                            contratto.setTipo(TipologiaContratto.Prestazioni);
                             break;
                     }
                     contratto.setQuota(rs.getFloat("quota"));
@@ -153,7 +156,7 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
                 try (ResultSet rs = s1.executeQuery()) {
                     while (rs.next()) {
                         utente = new Paziente();
-                        utente.setId(rs.getInt("Id"));
+                        utente.setId(rs.getInt("id"));
                         utente.setEmail(email);
                         utente.setCf(codicef);
                         utente.setRuolo(Ruolo.paziente);
@@ -178,13 +181,10 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
     }
 
 
-    // errore nell'inserimento della specializzazione. nel nostro db è un id che fa riferimento in un'altra tabella, non è una stringa
-    // aggiungere la query che ritorna l'id_specializzazione da aggiungere nell'insert del medico
-    public Utente registrazioneMedico(String password, String nome, String cognome, String codicef, String email, String telefono, String data, String luogo, String specializzazione, String contratto) throws BusinessException {
+    public Utente registrazioneMedico(String password, String nome, String cognome, String codicef, String email, String telefono, String data, String luogo, String specializzazione, String contratto, String turno, String oraInizio, String oraFine) throws BusinessException {
         Utente utente = null;
-        String query = "insert into utenti(password,nome,cognome,codice_fiscale,email,telefono,data_di_nascita,luogo_di_nascita,id_specializzazione,id_contratto)" + "values(?,?,?,?,?,?,?,?,?,?)";
+        String query = "insert into utenti(password,nome,cognome,codice_fiscale,email,telefono,data_di_nascita,luogo_di_nascita,id_specializzazione,id_contratto,ruolo,numeropresenze,numeroprestazioni)" + "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         String query2 = "select * from utenti where codice_fiscale=?";
-
 
         try (PreparedStatement st = con.prepareStatement(query)) {
 
@@ -198,6 +198,9 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
             st.setString(8, luogo);
             st.setInt(9, findIdSpecializzazione(specializzazione));
             st.setInt(10, findIdContratto(contratto));
+            st.setString(11,"medico");
+            st.setInt(12,0);
+            st.setInt(13,0);
             int res = st.executeUpdate();
 
 
@@ -209,7 +212,7 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
                 try (ResultSet rs = s1.executeQuery()) {
                     while (rs.next()) {
                         utente = new Medico();
-                        utente.setId(rs.getInt("Id"));
+                        utente.setId(rs.getInt("id"));
                         utente.setEmail(email);
                         utente.setCf(codicef);
                         utente.setRuolo(Ruolo.paziente);
@@ -220,6 +223,7 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
                         utente.setLuogoDiNascita(luogo);
                         utente.setTelefono(telefono);
                         ((Medico) utente).setSpecializzazione(Specializzazione.valueOf(specializzazione));
+                        inserisciTurno(((Medico) utente).getId(),turno,oraInizio,oraFine);
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -231,6 +235,25 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
             throwables.printStackTrace();
         }
         return utente;
+    }
+
+    private void inserisciTurno(int id_medico,String turno, String oraInizio, String oraFine) {
+        String query = "insert into turni(id_medico,data,ora_inizio,ora_fine,accettato,in_corso)" + "values(?,?,?,?,?,?)";
+
+        try (PreparedStatement st = con.prepareStatement(query)) {
+
+            st.setInt(1, id_medico);
+            st.setDate(2, Date.valueOf(turno));
+            st.setString(3,oraInizio);
+            st.setString(4, oraFine);
+            st.setInt(5,0);
+            st.setInt(6, 0);
+            int res = st.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
     }
 
     public int findIdContratto(String contratto) throws BusinessException{

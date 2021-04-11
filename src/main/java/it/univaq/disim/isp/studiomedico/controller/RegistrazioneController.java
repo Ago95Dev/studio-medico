@@ -10,10 +10,7 @@ import it.univaq.disim.isp.studiomedico.view.ViewException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -36,7 +33,7 @@ public class RegistrazioneController implements Initializable, DataInitializable
     @FXML
     private DatePicker Data;
     @FXML
-    private TextField PasswordTextField;
+    private PasswordField PasswordTextField;
     @FXML
     private TextField EmailTextField;
     @FXML
@@ -44,7 +41,7 @@ public class RegistrazioneController implements Initializable, DataInitializable
     @FXML
     private TextField TelefonoTextField;
     @FXML
-    private TextField CPasswordTextField;
+    private PasswordField CPasswordTextField;
 
     @FXML
     private Button registraButton;

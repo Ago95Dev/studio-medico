@@ -86,8 +86,8 @@ public class ProfiloUtenteController implements Initializable, DataInitializable
         TelefonoTextField.setText(utente.getTelefono());
         DataNascitaTextField.setText(utente.getDataDiNascita().toString());
         if (utente instanceof Medico){
-            SpecializzazioneTextField.setText(((Medico) utente).getStringfromSpecializzazione(((Medico) utente).getSpecializzazione()));
-            ContrattoTextField.setText(((Medico) utente).getStringfromContratto(((Medico) utente).getContratto().getTipo()));
+            SpecializzazioneTextField.setText(((Medico) utente).getSpecializzazione().toString());
+            ContrattoTextField.setText(((Medico) utente).getContratto().getTipo().toString());
             NumeroPresenzeTextField.setText(((Medico) utente).getNumeropresenze().toString());
             NumeroPrestazioniTextField.setText(((Medico) utente).getNumerovisite().toString());
         }
