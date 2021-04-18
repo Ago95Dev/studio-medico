@@ -106,7 +106,6 @@ public class ProfiloUtenteController implements Initializable, DataInitializable
     public void setItemsVisibility(Utente utente){
         if (!(utente instanceof Medico)){
             SpecializzazioneLabel.setVisible(false);
-            TurnoLabel.setVisible(false);
             ContrattoLabel.setVisible(false);
             NumeroPresenzeLabel.setVisible(false);
             NumeroPrestazioniLabel.setVisible(false);
@@ -114,7 +113,6 @@ public class ProfiloUtenteController implements Initializable, DataInitializable
             ContrattoTextField.setVisible(false);
             NumeroPresenzeTextField.setVisible(false);
             NumeroPrestazioniTextField.setVisible(false);
-            TurnoDatePicker.setVisible(false);
         }
     }
 }

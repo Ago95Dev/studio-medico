@@ -65,7 +65,7 @@ public class RegistrazioneMedicoController<listaspecializzazioni> implements Ini
     private final UtenteService utenteservice;
 
     protected ObservableList<String> listaspecializzazioni = FXCollections.observableArrayList("Fisioterapia", "Nutrizionista", "Cardiologia","Senologia","Otorinolaringoiatria","Ortopedia","Urologia","Neurologia","Gastroenterologia","Oncologia","Neurochirurgia","MedicinaInterna","Ginecologia","Psicologia","ChirurgiaVascolare","Ostetricia","Andrologia","Traumatologia");
-    protected ObservableList<String> listacontratti = FXCollections.observableArrayList("Forfettario", "Presenze", "Prestazioni");
+    protected ObservableList<String> listacontratti = FXCollections.observableArrayList("forfettario", "presenze", "prestazioni");
 
 
     public RegistrazioneMedicoController() {

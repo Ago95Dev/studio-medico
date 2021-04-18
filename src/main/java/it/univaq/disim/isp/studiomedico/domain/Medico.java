@@ -61,4 +61,5 @@ public class Medico extends Paziente {
 	public void setListaTurni(Set<Turno> listaTurni) {
 		this.listaTurni = listaTurni;
 	}
+
 }

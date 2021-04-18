@@ -13,4 +13,6 @@ public abstract class StudioMedicoBusinessFactory {
     }
 
     public abstract UtenteService getUtenteService();
+
+    public abstract PrenotazioneService getPrenotazioneService();
 }

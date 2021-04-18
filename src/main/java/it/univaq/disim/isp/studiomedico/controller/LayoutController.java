@@ -23,7 +23,7 @@ public class LayoutController implements Initializable, DataInitializable<Utente
 	private static final MenuElement MENU_HOME = new MenuElement("Home", "home");
 
 	private static final MenuElement[] MENU_PAZIENTI = {
-			new MenuElement("Prenotazione Visita", "prenotavisita"),
+			new MenuElement("Prenotazione Visita", "prenotazionevisita"),
 			new MenuElement("Storico Visite", "storicovisite"),
 			new MenuElement("Profilo Utente", "profiloutente")};
 	private static final MenuElement[] MENU_MEDICI = {

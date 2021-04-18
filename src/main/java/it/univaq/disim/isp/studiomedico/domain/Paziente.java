@@ -1,10 +1,12 @@
 package it.univaq.disim.isp.studiomedico.domain;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.Set;
 
-public class Paziente extends Utente{
-	private Set<Prenotazione> listaPrenotazioni;
+public class Paziente extends Utente {
+
+	private LinkedList<Prenotazione> listaPrenotazioni = new LinkedList<>();
 
 
 
@@ -15,6 +17,4 @@ public class Paziente extends Utente{
     public Paziente() {
 
     }
-
-    //public Set<Prenotazione> getPrenotazioni() {}
 }

@@ -1,40 +1,40 @@
 package it.univaq.disim.isp.studiomedico.domain;
 
-import java.util.Date;
+import java.time.Duration;
 
 public class Visita {
 
 	private String nome;
 	private float prezzo;
-	private Medico medico ;
-	private Paziente paziente;
-	private Date data, durata;
+	private Duration durata;
 
-	public Visita(Medico m,Paziente p,Date data) {
-		this.medico=m;
-		this.paziente=p;
-		this.data=data;
-	}
-	
-	public Medico getMedico() {
-		return medico;
-	}
-	public void setMedico(Medico medico) {
-		this.medico = medico;
-	}
-	public Paziente getPaziente() {
-		return paziente;
-	}
-	public void setPaziente(Paziente paziente) {
-		this.paziente = paziente;
-	}
-	public Date getData() {
-		return data;
-	}
-	public void setData(Date data) {
-		this.data = data;
+	public Visita(String nome, float prezzo, Duration durata) {
+		this.nome = nome;
+		this.prezzo = prezzo;
+		this.durata = durata;
 	}
 
+	public String getNome() {
+		return nome;
+	}
 
-	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public float getPrezzo() {
+		return prezzo;
+	}
+
+	public void setPrezzo(float prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	public Duration getDurata() {
+		return durata;
+	}
+
+	public void setDurata(Duration durata) {
+		this.durata = durata;
+	}
 }

@@ -75,7 +75,7 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
     }
 
 
-    private Contratto findContrattobyId(int id_contratto) {
+    public Contratto findContrattobyId(int id_contratto) {
         String query = "select * from contratti where id=?";
         Contratto contratto = new Contratto();
         try(PreparedStatement st = con.prepareStatement(query)){
@@ -85,13 +85,13 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
                     contratto.setId(rs.getInt("id"));
                     switch (rs.getString("tipologia_contratto")) {
                         case "forfettario":
-                            contratto.setTipo(TipologiaContratto.Forfettario);
+                            contratto.setTipo(TipologiaContratto.forfettario);
                             break;
                         case "presenze":
-                            contratto.setTipo(TipologiaContratto.Presenze);
+                            contratto.setTipo(TipologiaContratto.presenze);
                             break;
                         case "prestazioni":
-                            contratto.setTipo(TipologiaContratto.Prestazioni);
+                            contratto.setTipo(TipologiaContratto.prestazioni);
                             break;
                     }
                     contratto.setQuota(rs.getFloat("quota"));
@@ -107,7 +107,7 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
         return  contratto;
     }
 
-    private Specializzazione findSpecializzazionebyId(int id_specializzazione) {
+    public Specializzazione findSpecializzazionebyId(int id_specializzazione) {
         String query = "select * from specializzazioni where id=?";
         Specializzazione specializzazione = null;
         try(PreparedStatement st = con.prepareStatement(query)){
@@ -237,7 +237,7 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
         return utente;
     }
 
-    private void inserisciTurno(int id_medico,String turno, String oraInizio, String oraFine) {
+    public void inserisciTurno(int id_medico,String turno, String oraInizio, String oraFine) {
         String query = "insert into turni(id_medico,data,ora_inizio,ora_fine,accettato,in_corso)" + "values(?,?,?,?,?,?)";
 
         try (PreparedStatement st = con.prepareStatement(query)) {
