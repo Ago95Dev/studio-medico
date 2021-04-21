@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.*;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -309,7 +310,7 @@ public class PrenotazioneServiceDB extends ConnessioneDB implements Prenotazione
             st.setString(1,nomevisita);
             try (ResultSet rs = st.executeQuery()) {
                 while (rs.next()){
-                    Objects.requireNonNull(visita).setId(rs.getInt("id"));
+                    visita.setId(rs.getInt("id"));
                     visita.setNome(rs.getString("tipo"));
                     switch (rs.getString("durata")) {
                         case "30:00:00":
@@ -377,7 +378,7 @@ public class PrenotazioneServiceDB extends ConnessioneDB implements Prenotazione
 
     @Override
     public void annullaPrenotazione(Integer id_prenotazione) {
-        String query = "DELETE FROM `prenotazioni` WHERE id = ?";
+        String query = "DELETE FROM prenotazioni WHERE id = ?";
         try (PreparedStatement st = con.prepareStatement(query)) {
             st.setInt(1, id_prenotazione);
             st.execute();
@@ -385,6 +386,54 @@ public class PrenotazioneServiceDB extends ConnessioneDB implements Prenotazione
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void prenotaVisita(Prenotazione prenotazionestore) {
+        String query = "insert into prenotazioni(id_medico,id_paziente,inizio,fine,id_tipo_visita,id_turno)" + "values(?,?,?,?,?,?)";
+        try (PreparedStatement st = con.prepareStatement(query)) {
+            st.setInt(1, getTurnoById(prenotazionestore.getTurno().getId()).getMedico());
+            st.setInt(2, prenotazionestore.getPaziente().getId());
+            st.setTime(3, Time.valueOf(prenotazionestore.getOrainizio()));
+            st.setTime(4, Time.valueOf(prenotazionestore.getOrafine()));
+            st.setInt(5, getIdVisita(prenotazionestore.getVisita().getNome()));
+            st.setInt(6,prenotazionestore.getTurno().getId());
+            int res = st.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+
+
+    public Integer getIdVisita(String nomevisita) {
+        String query = "select id from tipi_visita where tipo=?";
+        Integer id_visita = null;
+        try(PreparedStatement st = con.prepareStatement(query)){
+            st.setString(1,nomevisita);
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()){
+                    id_visita = rs.getInt("id");
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                throw new BusinessException("Errore esecuzione query", e);
+            }
+        }catch (SQLException | BusinessException throwables) {
+            throwables.printStackTrace();
+        }
+        return id_visita;
+    }
+
+
+
+
+
+
+
+
+
+
 
     private int getIdSpecializzazionebyIdMedico(Integer id_medico) {
         Integer id_spec = null;
@@ -416,6 +465,7 @@ public class PrenotazioneServiceDB extends ConnessioneDB implements Prenotazione
                 while (rs.next()){
                     Objects.requireNonNull(turno).setId(rs.getInt("id"));
                     turno.setData(rs.getDate("data").toLocalDate());
+                    turno.setMedico(rs.getInt("id_medico"));
                 }
             }
             catch (SQLException e) {

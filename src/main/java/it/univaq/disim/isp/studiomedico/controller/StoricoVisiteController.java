@@ -51,6 +51,7 @@ public class StoricoVisiteController implements Initializable,  DataInitializabl
     private final ViewDispatcher manage;
     private PrenotazioneService prenotazioneService;
     private ObservableList<Prenotazione> listavisite;
+    private Utente utente;
 
     //avvio controller della vista
     public StoricoVisiteController() {
@@ -101,10 +102,12 @@ public class StoricoVisiteController implements Initializable,  DataInitializabl
     @FXML
     private void annullaPrenotazione(Prenotazione prenotazione) {
         prenotazioneService.annullaPrenotazione(prenotazione.getId());
+        manage.renderView("storicovisite",utente);
     }
 
     @Override
     public void initializeData(Utente utente) {
+        this.utente = utente;
         stampaListaVisite(prenotazioneService.getPrenotazioniByIdPaziente(utente.getId()));
     }
 

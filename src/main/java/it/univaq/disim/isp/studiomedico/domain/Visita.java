@@ -4,7 +4,7 @@ import java.time.Duration;
 
 public class Visita {
 
-	private int id;
+	private Integer id;
 	private String nome;
 	private float prezzo;
 	private Duration durata;
@@ -42,6 +42,10 @@ public class Visita {
 	}
 
 	public void setId(int id) {
+	}
+
+	public Integer getId(){
+		return this.id;
 	}
 
 	public String stampaDurata (){

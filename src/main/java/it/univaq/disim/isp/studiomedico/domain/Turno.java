@@ -10,6 +10,7 @@ public class Turno implements Comparable<Prenotazione>{
     private LocalDate data;
     private LocalTime orainizio;
     private LocalTime orafine;
+    private Integer id_medico;
     private boolean accettato;
     private boolean incorso;
     private LinkedList<Prenotazione> listaPrenotazioni = new LinkedList<>();
@@ -61,6 +62,14 @@ public class Turno implements Comparable<Prenotazione>{
 
     public void setListaPrenotazioni(LinkedList<Prenotazione> listaPrenotazioni) {
         this.listaPrenotazioni = listaPrenotazioni;
+    }
+
+    public Integer getMedico() {
+        return id_medico;
+    }
+
+    public void setMedico(Integer id_medico) {
+        this.id_medico = id_medico;
     }
 
     public boolean inCorso(){

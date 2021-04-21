@@ -21,6 +21,7 @@ public class ViewDispatcher {
 
 	private Stage stage;
 	private BorderPane layout;
+	private Utente utenteloggato = new Utente();
 
 	private ViewDispatcher(){} //definisco il costruttore privato cosi nessuna altra classe puo fare new
 
@@ -39,6 +40,10 @@ public class ViewDispatcher {
 	}
 
 
+	public Utente getUtenteloggato(){
+		return utenteloggato;
+	}
+
 	public void loggedIn(Utente utente) {
 		try {
 			View<Utente> layoutView = loadView("layout");
@@ -46,6 +51,7 @@ public class ViewDispatcher {
 			DataInitializable<Utente> layoutController = layoutView.getController();
 			layoutController.initializeData(utente);
 			layout = (BorderPane) layoutView.getView();
+			utenteloggato = utente;
 			//Anche in questo caso viene passato l'utente perche' nella vista di
 			//benvenuto il testo varia a seconda se e' docente od utente
 			renderView("home", utente);

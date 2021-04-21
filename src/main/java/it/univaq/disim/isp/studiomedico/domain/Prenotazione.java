@@ -9,7 +9,7 @@ public class Prenotazione implements Comparable<Prenotazione>{
     private LocalTime orafine;
     private boolean checkin;
     private boolean checkout;
-    private Paziente paziente;
+    private Utente paziente;
     private Medico medico;
     private Turno turno;
     private Visita visita;
@@ -80,12 +80,12 @@ public class Prenotazione implements Comparable<Prenotazione>{
     }
 
 
-    public Paziente getPaziente() {
+    public Utente getPaziente() {
         return paziente;
     }
 
-    public void setPaziente(Paziente paziente) {
-        this.paziente = paziente;
+    public void setPaziente(Utente utente) {
+        this.paziente = utente;
     }
 
     public Medico getMedico() {

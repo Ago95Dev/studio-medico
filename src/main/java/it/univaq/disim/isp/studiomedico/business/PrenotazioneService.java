@@ -35,4 +35,6 @@ public interface PrenotazioneService {
     List<String> getVisiteByIdTurno(Integer id);
 
     void annullaPrenotazione(Integer id);
+
+    void prenotaVisita(Prenotazione prenotazionestore);
 }

@@ -14,10 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
@@ -52,15 +49,16 @@ public class PrenotazioneSlotLiberiController implements Initializable, DataInit
     @FXML
     public Button cercaButton;
     @FXML
-    private CollationElementIterator SlotNonDisponibiliLabel;
+    private Label SlotNonDisponibiliLabel;
 
     private final ViewDispatcher manage;
     private PrenotazioneService prenotazioneService;
     private ObservableList<Prenotazione> listaslot;
     private ObservableList<String> listaVisite;
     private List<Prenotazione> listaSlotPrenotabili = new LinkedList<>();
-    private Turno turno = new Turno();
-    private Visita visita = new Visita();
+    private Turno turno;
+    private Visita visita;
+    private Prenotazione prenotazionestore;
 
 
     //avvio controller della vista
@@ -85,9 +83,9 @@ public class PrenotazioneSlotLiberiController implements Initializable, DataInit
         oraFineTableColumn.setCellValueFactory(new PropertyValueFactory<>("orafine"));
         durataTableColumn.setCellValueFactory(tf -> new SimpleStringProperty(tf.getValue().getVisita().stampaDurata()));
         prezzoTableColumn.setCellValueFactory(tf -> new SimpleStringProperty(tf.getValue().getVisita().stampaPrezzo()));
-        prenotaTableColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Turno,Button>, ObservableValue<Button>>() {
+        prenotaTableColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Prenotazione,Button>, ObservableValue<Button>>() {
             @Override
-            public ObservableValue<Button> call(TableColumn.CellDataFeatures<Turno, Button> param) {
+            public ObservableValue<Button> call(TableColumn.CellDataFeatures<Prenotazione, Button> param) {
                 // pulsante visualizza
                 final Button prenotaButton = new Button("Prenota");
                 prenotaButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -104,10 +102,11 @@ public class PrenotazioneSlotLiberiController implements Initializable, DataInit
 
     @Override
     public void initializeData(Turno turno) throws BusinessException {
-        this.turno.setId(turno.getId());
+        this.turno = turno;
+/*        this.turno.setId(turno.getId());
         this.turno.setData(turno.getData());
         this.turno.setOrainizio(turno.getOrainizio());
-        this.turno.setOrafine(turno.getOrafine());
+        this.turno.setOrafine(turno.getOrafine());*/
         this.turno.setListaPrenotazioni((LinkedList<Prenotazione>) prenotazioneService.getPrenotazioniByIdTurno(turno.getId()));
         List<String> listaNomiVisite = new LinkedList<>();
         listaNomiVisite = prenotazioneService.getVisiteByIdTurno(turno.getId());
@@ -116,6 +115,7 @@ public class PrenotazioneSlotLiberiController implements Initializable, DataInit
     }
 
     public void effettuaRiercaSlot(ActionEvent actionEvent) {
+        SlotNonDisponibiliLabel.setVisible(false);
         SlotTableView.getItems().clear();
         this.turno.getListaPrenotazioni().sort(new Sort_by_Start_Time());
         this.visita = prenotazioneService.getVisita(visiteChoiceBoxField.getValue().toString());
@@ -175,7 +175,9 @@ public class PrenotazioneSlotLiberiController implements Initializable, DataInit
             }
             // ciclo tra le prenotazioni
             Prenotazione x = turno.getListaPrenotazioni().getFirst();
-            for (int j = 0; j <= turno.getListaPrenotazioni().size(); j++) {
+            for (int j = 0; j < turno.getListaPrenotazioni().size(); j++) {
+                if (turno.getListaPrenotazioni().size()==1)
+                    break;
                 if (!(x.getOrafine().equals(turno.getListaPrenotazioni().get(j+1).getOrainizio()))) {
                     Duration total_slot = Duration.between(x.getOrafine(), turno.getListaPrenotazioni().get(j+1).getOrainizio());
                     LocalTime partial_time = x.getOrafine();
@@ -232,6 +234,7 @@ public class PrenotazioneSlotLiberiController implements Initializable, DataInit
         }
         if (disponibili == false) {
             SlotNonDisponibiliLabel.setText("Non ci sono Slot Disponibili");
+            SlotNonDisponibiliLabel.setVisible(true);
             //System.out.println("Non ci sono slot disponibili!");
         }
         else {
@@ -240,13 +243,14 @@ public class PrenotazioneSlotLiberiController implements Initializable, DataInit
         }
     }
 
-
-
-
-
-
     @FXML
-    public void prenotaSlot(Turno prenotazione){
-        // query che inserisce la nuova prenotazione nel db
+    private void prenotaSlot(Prenotazione prenotazione){
+        this.prenotazionestore = prenotazione;
+        prenotazionestore.setTurno(this.turno);
+        prenotazionestore.setPaziente(manage.getUtenteloggato());
+        prenotazionestore.setOrainizio(prenotazione.getOrainizio());
+        prenotazionestore.setOrafine(prenotazione.getOrafine());
+        prenotazionestore.setVisita(this.visita);
+        prenotazioneService.prenotaVisita(prenotazionestore);
     }
 }
