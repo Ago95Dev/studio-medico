@@ -84,14 +84,14 @@ public class UtenteServiceDB extends ConnessioneDB implements UtenteService {
                 while (rs.next()){
                     contratto.setId(rs.getInt("id"));
                     switch (rs.getString("tipologia_contratto")) {
-                        case "forfettario":
-                            contratto.setTipo(TipologiaContratto.forfettario);
+                        case "Forfettario":
+                            contratto.setTipo(TipologiaContratto.Forfettario);
                             break;
-                        case "presenze":
-                            contratto.setTipo(TipologiaContratto.presenze);
+                        case "Presenze":
+                            contratto.setTipo(TipologiaContratto.Presenze);
                             break;
-                        case "prestazioni":
-                            contratto.setTipo(TipologiaContratto.prestazioni);
+                        case "Prestazioni":
+                            contratto.setTipo(TipologiaContratto.Prestazioni);
                             break;
                     }
                     contratto.setQuota(rs.getFloat("quota"));

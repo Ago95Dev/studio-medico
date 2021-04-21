@@ -5,7 +5,7 @@ import java.time.LocalTime;
 import java.util.Collections;
 import java.util.LinkedList;
 
-public class Turno {
+public class Turno implements Comparable<Prenotazione>{
     private Integer id;
     private LocalDate data;
     private LocalTime orainizio;
@@ -100,4 +100,8 @@ public class Turno {
     }
 
 
+    @Override
+    public int compareTo(Prenotazione o) {
+        return 0;
+    }
 }

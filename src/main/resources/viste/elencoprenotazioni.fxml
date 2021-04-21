@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="522.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.ElencoPrenotazioniController">
+    <children>
+        <Text layoutX="239.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: black;" text="Elenco delle visite Prenotate">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <TableView fx:id="PrenotazioniTableView" layoutX="21.0" layoutY="102.0" prefHeight="368.0" prefWidth="661.0">
+            <columns>
+                <TableColumn fx:id="visitaTableColumn" prefWidth="153.0" text="Visita" />
+                <TableColumn fx:id="pazienteTableColumn" prefWidth="155.0" text="Paziente" />
+                <TableColumn fx:id="oraInizioTableColumn" prefWidth="173.0" text="Ora Inizio" />
+                <TableColumn fx:id="oraFineTableColumn" prefWidth="179.0" text="Ora Fine" />
+            </columns>
+        </TableView>
+     <!-- <Button fx:id="BackButton" onAction="#annullaAction" layoutX="21.0" layoutY="49.0" mnemonicParsing="false" text="Annulla" />-->
+    </children>
+</AnchorPane>

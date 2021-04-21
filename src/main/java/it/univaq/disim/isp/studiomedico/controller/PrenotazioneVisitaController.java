@@ -41,28 +41,72 @@ public class PrenotazioneVisitaController implements Initializable,  DataInitial
     @FXML
     public ChoiceBox<String> medicoChoiceBoxField;
     @FXML
-    public ChoiceBox<String> visitaChoiceBoxField;
+    public ChoiceBox<String> specializzazioneChoiceBoxField;
 
 
-    private final ObservableList<String> listaVisite = FXCollections.observableArrayList("LaserTerapia",
-            "UltrasuonoTerapia",
-            "TecarterTerapia",
-            "RiabilitazionePosturale",
-            "Valutazione",
-            "ChinesiTerapia",
-            "ElettroTerapia",
-            "LinfoDrenaggio",
-            "Test ADP",
-            "VisitaSpecialistica",
-            "EcoCardiogramma",
-            "ECG","ECHHOLTER24ORE","HOLTERPRESSORIO","ECGDASFORZO",
-            "ESAMEAUDIOMETRICO","FIBROLARINGOSCOPIA","ESAMEDESTIBOLARE",
+    private final ObservableList<String> listaVisite = FXCollections.observableArrayList(
+            "Holter pressorio",
+            "Laserterapia",
+            "Ultrasuonoterapia",
+            "Tecarterterapia",
+            "Riabilitazione posturale",
+            "Visita nutrizionistica",
+            "Visita di controllo",
+            "Chinesiterapia",
+            "Elettroterapia",
+            "Linfodrenaggio",
+            "Visita senologica",
+            "Visita urologica",
+            "Visita urologica + Ecografia",
+            "Visita andrologica",
+            "Visita andrologia + Ecografia",
+            "Ecocardiogramma",
+            "ECG da sforzo",
             "Ecografia",
-            "ElettroMiografia",
-            "VisitaGastroenterologica",
-            "VisitaProctologica","IdroColonTerapia","BreathTest",
-            "VisitaOstetrica","VisitaGinecologica","EcografiaGinecologica","PapTest",
-            "EcoColorDoppler");
+            "Elettromiografia",
+            "Visita neurologica",
+            "Visita neurochirurgica",
+            "Visita gastroenterologica",
+            "Visita otorinolaringoiatrica",
+            "Esame audiometrico",
+            "Fibrolaringoscopia",
+            "Esame destibolare",
+            "Visita ortopedica",
+            "Visita traumatologica",
+            "Visita oncologica",
+            "Visita proctologica",
+            "Idrocolonterapia",
+            "Breath Test",
+            "Visita endocrinologica",
+            "Visita ematologica",
+            "Visita ostetrica",
+            "Visita ginecologica",
+            "Ecografia ginecologica",
+            "Pap Test",
+            "Visita + Ecocolordoppler",
+            "Visita psicologica"
+    );
+
+    protected ObservableList<String> listaspecializzazioni = FXCollections.observableArrayList(
+            "Fisioterapia",
+            "Nutrizionista",
+            "Cardiologia",
+            "Senologia",
+            "Otorinolaringoiatria",
+            "Ortopedia",
+            "Urologia",
+            "Neurologia",
+            "Gastroenterologia",
+            "Oncologia",
+            "Neurochirurgia",
+            "Medicina Interna",
+            "Ginecologia",
+            "Psicologia",
+            "Chirurgia Vascolare",
+            "Ostetricia",
+            "Andrologia",
+            "Traumatologia"
+    );
 
     private ObservableList<String> listaMedici = FXCollections.observableArrayList();
 
@@ -86,12 +130,12 @@ public class PrenotazioneVisitaController implements Initializable,  DataInitial
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cercaButton.disableProperty()
-                .bind(visitaChoiceBoxField.valueProperty().isNull().or(medicoChoiceBoxField.valueProperty().isNull()));
-        visitaChoiceBoxField.setItems(listaVisite);
+                .bind(specializzazioneChoiceBoxField.valueProperty().isNull().or(medicoChoiceBoxField.valueProperty().isNull()));
+        specializzazioneChoiceBoxField.setItems(listaspecializzazioni);
 
-        visitaChoiceBoxField.setOnAction(event -> {
+        specializzazioneChoiceBoxField.setOnAction(event -> {
             medicoChoiceBoxField.getItems().clear();
-            setListaMedici(visitaChoiceBoxField.getValue());
+            setListaMedici(specializzazioneChoiceBoxField.getValue());
         });
         dataTurnoTableColumn.setStyle("-fx-alignment: CENTER;");
         oraInizioTableColumn.setStyle("-fx-alignment: CENTER;");
@@ -108,7 +152,7 @@ public class PrenotazioneVisitaController implements Initializable,  DataInitial
                 prenotaButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        manage.renderView("Visualizza", param.getValue());
+                        manage.renderView("prenotazioneslotliberi", param.getValue());
 
                     }
                 });
@@ -120,8 +164,8 @@ public class PrenotazioneVisitaController implements Initializable,  DataInitial
     public void initializeData(Utente utente) {
     }
 
-    public void setListaMedici(String visita){
-        List<Medico> lista = prenotazioneService.effettuaRicercaPrenotazione(visita);
+    public void setListaMedici(String specializzazione){
+        List<Medico> lista = prenotazioneService.effettuaRicercaPrenotazione(specializzazione);
         for (Medico m: lista) {
             listaMedici.add(m.getNome() + " " + m.getCognome());
         }

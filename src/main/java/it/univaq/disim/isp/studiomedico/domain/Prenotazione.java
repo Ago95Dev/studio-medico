@@ -9,8 +9,19 @@ public class Prenotazione implements Comparable<Prenotazione>{
     private LocalTime orafine;
     private boolean checkin;
     private boolean checkout;
+    private Paziente paziente;
+    private Medico medico;
+    private Turno turno;
     private Visita visita;
     private Fattura fattura;
+
+    public Prenotazione(LocalTime orainizio, LocalTime orafine, Visita visita) {
+        this.orainizio = orainizio;
+        this.orafine = orafine;
+        this.visita = visita;
+    }
+
+    public Prenotazione(){}
 
     public Integer getId() {
         return id;
@@ -66,6 +77,31 @@ public class Prenotazione implements Comparable<Prenotazione>{
 
     public void setFattura(Fattura fattura) {
         this.fattura = fattura;
+    }
+
+
+    public Paziente getPaziente() {
+        return paziente;
+    }
+
+    public void setPaziente(Paziente paziente) {
+        this.paziente = paziente;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
+    public Turno getTurno() {
+        return turno;
+    }
+
+    public void setTurno(Turno turno) {
+        this.turno = turno;
     }
 
     @Override

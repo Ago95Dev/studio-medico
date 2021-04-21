@@ -2,6 +2,7 @@ package it.univaq.disim.isp.studiomedico.view;
 
 import java.io.IOException;
 
+import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
 import it.univaq.disim.isp.studiomedico.controller.DataInitializable;
 import it.univaq.disim.isp.studiomedico.domain.Utente;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +17,7 @@ public class ViewDispatcher {
 
 	private static final String RESOURCE_BASE = "/viste/";
 	private static final String FXML_SUFFIX = ".fxml";
-	private static ViewDispatcher instance = new ViewDispatcher();//dichiaro una varabile statica
+	private static final ViewDispatcher instance = new ViewDispatcher();//dichiaro una varabile statica
 
 	private Stage stage;
 	private BorderPane layout;
@@ -50,7 +51,7 @@ public class ViewDispatcher {
 			renderView("home", utente);
 			Scene scene = new Scene(layout);
 			stage.setScene(scene);
-		} catch (ViewException e) {
+		} catch (ViewException | BusinessException e) {
 			renderError(e);
 		}
 	}
@@ -80,7 +81,7 @@ public class ViewDispatcher {
 			DataInitializable<T> controller = view.getController();
 			controller.initializeData(data);
 			layout.setCenter(view.getView());
-		} catch (ViewException e) {
+		} catch (ViewException | BusinessException e) {
 			renderError(e);
 		}
 	}
@@ -95,7 +96,7 @@ public class ViewDispatcher {
 	private <T> View<T> loadView(String viewName) throws ViewException {//ritorna nn un oggetto parent ma un oggetto di tipo view
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(RESOURCE_BASE + viewName + FXML_SUFFIX));
-			Parent parent = (Parent) loader.load();
+			Parent parent = loader.load();
 			return new View<>(parent, loader.getController());
 		} catch (IOException e) {
 			e.printStackTrace();

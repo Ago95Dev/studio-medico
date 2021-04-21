@@ -23,7 +23,8 @@ public class RegistrazioneController implements Initializable, DataInitializable
     public Label NomeLabel;
     @FXML
     public Label registerErrorLabel;
-
+    @FXML
+    public CheckBox GDPRCheckBoxField;
     @FXML
     private TextField CodiceFiscaleTextField;
     @FXML
@@ -70,9 +71,8 @@ public class RegistrazioneController implements Initializable, DataInitializable
         registerErrorLabel.setVisible(false);
         registraButton.disableProperty()
                 .bind(CodiceFiscaleTextField.textProperty().isEmpty().or(NomeTextField.textProperty().isEmpty()).or(CognomeTextField.textProperty().isEmpty())
-                .or(PasswordTextField.textProperty().isEmpty()).or(CPasswordTextField.textProperty().isEmpty()).or(TelefonoTextField.textProperty().isEmpty())
-                .or(LuogoTextField.textProperty().isEmpty()).or(Data.valueProperty().isNull()));
-
+                        .or(PasswordTextField.textProperty().isEmpty()).or(CPasswordTextField.textProperty().isEmpty()).or(TelefonoTextField.textProperty().isEmpty())
+                        .or(LuogoTextField.textProperty().isEmpty()).or(Data.valueProperty().isNull()));
     }
 
     // registrazione utente

@@ -31,6 +31,7 @@
       <Label layoutX="47.0" layoutY="349.0" text="Conferma Password" />
       <Label layoutX="320.0" layoutY="302.0" text="Numero Telefono" />
       <TextField fx:id="TelefonoTextField" layoutX="417.0" layoutY="297.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
-      <Label fx:id="registerErrorLabel" layoutX="266.0" layoutY="393.0" text="Le Password inserite non combaciano!" textFill="#eb0000" />
+      <Label fx:id="registerErrorLabel" layoutX="266.0" layoutY="414.0" text="Le Password inserite non combaciano!" textFill="#eb0000" />
+      <CheckBox fx:id="GDPRCheckBoxField" layoutX="163.0" layoutY="390.0" mnemonicParsing="false" text="Acconsento al trattamento dei dati personali secondo le normative GDPR" />
    </children>
 </AnchorPane>

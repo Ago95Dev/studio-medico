@@ -4,6 +4,7 @@ import java.time.Duration;
 
 public class Visita {
 
+	private int id;
 	private String nome;
 	private float prezzo;
 	private Duration durata;
@@ -13,6 +14,8 @@ public class Visita {
 		this.prezzo = prezzo;
 		this.durata = durata;
 	}
+
+	public Visita(){}
 
 	public String getNome() {
 		return nome;
@@ -36,5 +39,21 @@ public class Visita {
 
 	public void setDurata(Duration durata) {
 		this.durata = durata;
+	}
+
+	public void setId(int id) {
+	}
+
+	public String stampaDurata (){
+		if (this.durata.equals(Duration.ofMinutes(30))) {
+			return this.durata.toMinutes() + "m";
+		}
+		else {
+			return this.durata.toHours() + "h";
+		}
+	}
+
+	public String stampaPrezzo() {
+		return this.prezzo + "€";
 	}
 }
