@@ -219,12 +219,12 @@ public class PrenotazioneServiceDB extends ConnessioneDB implements Prenotazione
 
     }
 
-    public Paziente getPazienteById(int id_paziente) {
-        String query = "select * from utenti where id=? and ruolo=?";
-        Paziente paziente = new Paziente();
+    public Utente getPazienteById(int id_paziente) {
+        String query = "select * from utenti where id=?"; /*and ruolo=?*/
+        Utente paziente = new Utente();
         try(PreparedStatement st = con.prepareStatement(query)){
             st.setInt(1,id_paziente);
-            st.setString(2,"paziente");
+            //st.setString(2,"paziente");
             try (ResultSet rs = st.executeQuery()) {
                 while (rs.next()){
                     Objects.requireNonNull(paziente).setId(rs.getInt("id"));
@@ -391,7 +391,7 @@ public class PrenotazioneServiceDB extends ConnessioneDB implements Prenotazione
     public void prenotaVisita(Prenotazione prenotazionestore) {
         String query = "insert into prenotazioni(id_medico,id_paziente,inizio,fine,id_tipo_visita,id_turno)" + "values(?,?,?,?,?,?)";
         try (PreparedStatement st = con.prepareStatement(query)) {
-            st.setInt(1, getTurnoById(prenotazionestore.getTurno().getId()).getMedico());
+            st.setInt(1, getTurnoById(prenotazionestore.getTurno().getId()).getId_Medico());
             st.setInt(2, prenotazionestore.getPaziente().getId());
             st.setTime(3, Time.valueOf(prenotazionestore.getOrainizio()));
             st.setTime(4, Time.valueOf(prenotazionestore.getOrafine()));
@@ -403,6 +403,34 @@ public class PrenotazioneServiceDB extends ConnessioneDB implements Prenotazione
         }
     }
 
+    @Override
+    public List<Turno> getTurniByNow(LocalDate now) {
+        List<Turno> listaTurni = new LinkedList<>();
+        String query = "select * from turni where data=?";
+        try (PreparedStatement st = con.prepareStatement(query)) {
+            st.setDate(1, Date.valueOf(now));
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()) {
+                    Turno turno = new Turno();
+                    turno.setId(rs.getInt("id"));
+                    turno.setMedico(getMedicoById(rs.getInt("id_medico")));
+                    turno.setData(rs.getDate("data").toLocalDate());
+                    turno.setOrainizio(rs.getTime("ora_inizio").toLocalTime());
+                    turno.setOrafine(rs.getTime("ora_fine").toLocalTime());
+                    turno.setAccettato(rs.getBoolean("accettato"));
+                    turno.setIncorso(rs.getBoolean("in_corso"));
+                    listaTurni.add(turno);
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                throw new BusinessException("Errore esecuzione query", e);
+            }
+        }catch (SQLException | BusinessException throwables) {
+            throwables.printStackTrace();
+        }
+        return listaTurni;
+    }
 
 
     public Integer getIdVisita(String nomevisita) {
@@ -424,16 +452,6 @@ public class PrenotazioneServiceDB extends ConnessioneDB implements Prenotazione
         }
         return id_visita;
     }
-
-
-
-
-
-
-
-
-
-
 
     private int getIdSpecializzazionebyIdMedico(Integer id_medico) {
         Integer id_spec = null;
@@ -465,7 +483,7 @@ public class PrenotazioneServiceDB extends ConnessioneDB implements Prenotazione
                 while (rs.next()){
                     Objects.requireNonNull(turno).setId(rs.getInt("id"));
                     turno.setData(rs.getDate("data").toLocalDate());
-                    turno.setMedico(rs.getInt("id_medico"));
+                    turno.setId_Medico(rs.getInt("id_medico"));
                 }
             }
             catch (SQLException e) {
@@ -489,6 +507,8 @@ public class PrenotazioneServiceDB extends ConnessioneDB implements Prenotazione
                     Objects.requireNonNull(medico).setId(rs.getInt("id"));
                     medico.setNome(rs.getString("nome"));
                     medico.setCognome(rs.getString("cognome"));
+                    medico.setCf(rs.getString(("codice_fiscale")));
+                    medico.setSpecializzazione(findSpecializzazionebyId(rs.getInt("id_specializzazione")));
                 }
             }
             catch (SQLException e) {
@@ -499,5 +519,25 @@ public class PrenotazioneServiceDB extends ConnessioneDB implements Prenotazione
             throwables.printStackTrace();
         }
         return medico;
+    }
+
+    public Specializzazione findSpecializzazionebyId(int id_specializzazione) {
+        String query = "select * from specializzazioni where id=?";
+        Specializzazione specializzazione = null;
+        try(PreparedStatement st = con.prepareStatement(query)){
+            st.setInt(1,id_specializzazione);
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()){
+                    specializzazione = Specializzazione.valueOf(rs.getString("tipologia"));
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                throw new BusinessException("Errore esecuzione query", e);
+            }
+        }catch (SQLException | BusinessException throwables) {
+            throwables.printStackTrace();
+        }
+        return specializzazione;
     }
 }

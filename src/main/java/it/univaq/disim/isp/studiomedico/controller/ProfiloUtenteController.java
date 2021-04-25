@@ -1,5 +1,7 @@
 package it.univaq.disim.isp.studiomedico.controller;
 
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTimePicker;
 import it.univaq.disim.isp.studiomedico.business.StudioMedicoBusinessFactory;
 import it.univaq.disim.isp.studiomedico.business.UtenteService;
 import it.univaq.disim.isp.studiomedico.domain.Medico;
@@ -33,6 +35,24 @@ public class ProfiloUtenteController implements Initializable, DataInitializable
     public Label NumeroPresenzeLabel;
     @FXML
     public Label NumeroPrestazioniLabel;
+    @FXML
+    public JFXDatePicker DatePickerTurno;
+    @FXML
+    public JFXTimePicker TimePickerOraInizio;
+    @FXML
+    public JFXTimePicker TimePickerOraFine;
+    @FXML
+    public Label proponiTurnoLabel;
+    @FXML
+    public Label OrafineLabel;
+    @FXML
+    public Label OrainizioLabel;
+    @FXML
+    public Button proponiTurnoButton;
+    @FXML
+    public TextField pagamentoTextField;
+    @FXML
+    public Label pagamentoLabel;
     @FXML
     private Button SalvaModificheButton;
     @FXML
@@ -90,12 +110,14 @@ public class ProfiloUtenteController implements Initializable, DataInitializable
             ContrattoTextField.setText(((Medico) utente).getContratto().getTipo().toString());
             NumeroPresenzeTextField.setText(((Medico) utente).getNumeropresenze().toString());
             NumeroPrestazioniTextField.setText(((Medico) utente).getNumerovisite().toString());
+            pagamentoTextField.setText(((Medico) utente).getContratto().stampaContratto(((Medico) utente).getNumeropresenze(),((Medico) utente).getNumerovisite()));
         }
     }
 
     @FXML
-    public void modificaProfiloAction(ActionEvent actionEvent) {
-
+    public void proponiTurnoAction(ActionEvent actionEvent) {
+        utenteservice.inserisciTurnoProvvisorio(manage.getUtenteloggato().getId(),DatePickerTurno.getValue().toString(),TimePickerOraInizio.getValue().toString(),TimePickerOraFine.getValue().toString());
+        manage.renderView("profiloutente",manage.getUtenteloggato());
     }
 
     @Override
@@ -113,6 +135,23 @@ public class ProfiloUtenteController implements Initializable, DataInitializable
             ContrattoTextField.setVisible(false);
             NumeroPresenzeTextField.setVisible(false);
             NumeroPrestazioniTextField.setVisible(false);
+            proponiTurnoLabel.setVisible(false);
+            OrafineLabel.setVisible(false);
+            OrainizioLabel.setVisible(false);
+            DatePickerTurno.setVisible(false);
+            TimePickerOraFine.setVisible(false);
+            TimePickerOraInizio.setVisible(false);
+            proponiTurnoButton.setVisible(false);
+            AnnullaModificheButton.setVisible(false);
+            pagamentoTextField.setVisible(false);
+            pagamentoLabel.setVisible(false);
         }
+    }
+
+    @FXML
+    public void resetTurnoProposto(ActionEvent actionEvent) {
+        DatePickerTurno.getEditor().clear();
+        TimePickerOraInizio.getEditor().clear();
+        TimePickerOraFine.getEditor().clear();
     }
 }

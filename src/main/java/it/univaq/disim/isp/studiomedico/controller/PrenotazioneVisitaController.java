@@ -167,7 +167,8 @@ public class PrenotazioneVisitaController implements Initializable,  DataInitial
     public void setListaMedici(String specializzazione){
         List<Medico> lista = prenotazioneService.effettuaRicercaPrenotazione(specializzazione);
         for (Medico m: lista) {
-            listaMedici.add(m.getNome() + " " + m.getCognome());
+            if (!(m.getCf().equals(manage.getUtenteloggato().getCf())))
+                listaMedici.add(m.getNome() + " " + m.getCognome());
         }
         medicoChoiceBoxField.setItems(listaMedici);
     }

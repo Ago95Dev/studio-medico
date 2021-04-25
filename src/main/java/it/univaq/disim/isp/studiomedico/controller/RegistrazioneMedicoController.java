@@ -3,6 +3,7 @@ package it.univaq.disim.isp.studiomedico.controller;
 
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTimePicker;
+import it.univaq.disim.isp.studiomedico.business.SegretariaService;
 import it.univaq.disim.isp.studiomedico.business.StudioMedicoBusinessFactory;
 import it.univaq.disim.isp.studiomedico.business.UtenteService;
 import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
@@ -62,7 +63,7 @@ public class RegistrazioneMedicoController<listaspecializzazioni> implements Ini
     private Utente medico;
 
     private final ViewDispatcher manage;
-    private final UtenteService utenteservice;
+    private final SegretariaService segretariaService;
 
     protected ObservableList<String> listaspecializzazioni = FXCollections.observableArrayList(
             "Fisioterapia",
@@ -95,10 +96,11 @@ public class RegistrazioneMedicoController<listaspecializzazioni> implements Ini
     public RegistrazioneMedicoController() {
         manage = ViewDispatcher.getInstance();
         StudioMedicoBusinessFactory factory = StudioMedicoBusinessFactory.getInstance();
-        utenteservice = factory.getUtenteService();
+        segretariaService = factory.getSegretariaService();
     }
 
     public void initialize(URL location, ResourceBundle resources) {
+        registerErrorLabel.setVisible(false);
         registraButton.disableProperty()
                 .bind(CodiceFiscaleTextField.textProperty().isEmpty().or(NomeTextField.textProperty().isEmpty()).or(CognomeTextField.textProperty().isEmpty()));
         SpecializzazioneChoiceBox.setItems(listaspecializzazioni);
@@ -109,7 +111,7 @@ public class RegistrazioneMedicoController<listaspecializzazioni> implements Ini
     @FXML
     public void registrazioneAction(ActionEvent event) throws BusinessException {
         if (CPasswordTextField.getText().equals(PasswordTextField.getText())) {
-            medico = utenteservice.registrazioneMedico(PasswordTextField.getText(), NomeTextField.getText(), CognomeTextField.getText(), CodiceFiscaleTextField.getText(), EmailTextField.getText(), TelefonoTextField.getText(), Data.getValue().toString(), LuogoTextField.getText(), (String) SpecializzazioneChoiceBox.getValue(), (String) ContrattoChoiceBox.getValue(), DatePickerTurno.getValue().toString(), TimePickerOraInizio.getValue().toString(), TimePickerOraFine.getValue().toString());
+            medico = segretariaService.registrazioneMedico(PasswordTextField.getText(), NomeTextField.getText(), CognomeTextField.getText(), CodiceFiscaleTextField.getText(), EmailTextField.getText(), TelefonoTextField.getText(), Data.getValue().toString(), LuogoTextField.getText(), (String) SpecializzazioneChoiceBox.getValue(), (String) ContrattoChoiceBox.getValue(), DatePickerTurno.getValue().toString(), TimePickerOraInizio.getValue().toString(), TimePickerOraFine.getValue().toString());
         }
         else {
             registerErrorLabel.setVisible(true);
@@ -117,7 +119,9 @@ public class RegistrazioneMedicoController<listaspecializzazioni> implements Ini
         }
     }
 
+    @FXML
     public void annullaAction(ActionEvent actionEvent) {
+        manage.renderView("gestioneutenti",manage.getUtenteloggato());
     }
 
 

@@ -238,6 +238,18 @@ public class PrenotazioneSlotLiberiController implements Initializable, DataInit
             //System.out.println("Non ci sono slot disponibili!");
         }
         else {
+            // Questo controllo sarebbe da testare accuratamente se funziona in modo corretto
+            List<Prenotazione> listaPrenotazioniUtente = prenotazioneService.getPrenotazioniByIdPaziente(manage.getUtenteloggato().getId());
+            for (Prenotazione p: listaPrenotazioniUtente){
+                for (Prenotazione s: listaSlotPrenotabili) {
+                    if (p.getTurno().getData().equals(turno.getData())){
+                        if ((p.getOrainizio().equals(s.getOrainizio()) && p.getOrafine().equals(s.getOrafine())) ||
+                                (p.getOrainizio().isAfter(s.getOrainizio()) && p.getOrafine().isAfter(s.getOrafine())) ||
+                                (p.getOrainizio().isBefore(s.getOrainizio()) && p.getOrafine().isBefore(s.getOrafine())))
+                            listaSlotPrenotabili.remove(s);
+                    }
+                }
+            }
             listaslot = FXCollections.observableList(listaSlotPrenotabili);
             SlotTableView.setItems(listaslot);
         }

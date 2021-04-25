@@ -12,7 +12,7 @@
                 <Font size="24.0" />
             </font>
         </Label>
-        <Button fx:id="registraButton" layoutX="504.0" layoutY="438.0" mnemonicParsing="false" onAction="#registrazioneAction" prefHeight="25.0" prefWidth="110.0" text="Registrati" />
+        <Button fx:id="registraButton" layoutX="504.0" layoutY="438.0" mnemonicParsing="false" onAction="#registrazioneAction" prefHeight="25.0" prefWidth="110.0" text="Registra" />
         <TextField fx:id="NomeTextField" layoutX="160.0" layoutY="91.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
         <Label fx:id="NomeLabel" layoutX="116.0" layoutY="96.0" text="Nome: " />
         <Label layoutX="97.0" layoutY="137.0" text="Cognome: " />

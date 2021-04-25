@@ -28,4 +28,18 @@ public class Contratto {
     public void setQuota(float quota) {
         this.quota = quota;
     }
+
+    public String stampaContratto(int numeropresenze, int numeroprestazioni) {
+        switch (tipo){
+            case Forfettario:
+                break;
+            case Presenze:
+                this.quota *= numeropresenze;
+                break;
+            case Prestazioni:
+                this.quota *= numeroprestazioni;
+                break;
+        }
+        return this.quota + "€";
+    }
 }

@@ -25,13 +25,16 @@ public class LayoutController implements Initializable, DataInitializable<Utente
 	private static final MenuElement[] MENU_PAZIENTI = {
 			new MenuElement("Prenotazione Visita", "prenotazionevisita"),
 			new MenuElement("Storico Visite", "storicovisite"),
-			new MenuElement("Profilo Utente", "profiloutente")};
+			new MenuElement("Profilo Utente", "profiloutente")
+	};
 	private static final MenuElement[] MENU_MEDICI = {
-			new MenuElement("Storico Turni", "storicoturni")};
+			new MenuElement("Storico Turni", "storicoturni")
+	};
 	private static final MenuElement[] MENU_SEGRETERIA = {
-			new MenuElement("Gestione turni", "gestioneturni"),
-			new MenuElement("Gestisci utenti", "gestioneutenti"),
-			new MenuElement("Aggiungi Medico","registrazionemedico"),
+			new MenuElement("Gestione Turni", "gestioneturni"),
+			new MenuElement("Gestione Utenti", "gestioneutenti"),
+			/*new MenuElement("Aggiungi Medico","registrazionemedico"),*/
+			new MenuElement("Checkin/Checkout","riscontrovisite")
 	};
 
 	@FXML

@@ -4,7 +4,6 @@ import it.univaq.disim.isp.studiomedico.business.PrenotazioneService;
 import it.univaq.disim.isp.studiomedico.business.StudioMedicoBusinessFactory;
 import it.univaq.disim.isp.studiomedico.domain.*;
 import it.univaq.disim.isp.studiomedico.view.ViewDispatcher;
-import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -19,9 +18,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
-
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -82,7 +79,7 @@ public class StoricoVisiteController implements Initializable,  DataInitializabl
             public ObservableValue<Button> call(TableColumn.CellDataFeatures<Prenotazione, Button> param) {
                 // pulsante visualizza
                 final Button annullaButton = new Button("Annulla Visita");
-                final Button eseguitaButton = new Button("Visita effettuata");
+                final Button eseguitaButton = new Button("Visita Effettuata");
                 eseguitaButton.setDisable(true);
                 annullaButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override

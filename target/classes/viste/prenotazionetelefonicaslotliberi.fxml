@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.PrenotazioneTelefonicaSlotLiberiController">
+
+    <children>
+        <Label layoutX="269.0" layoutY="77.0" style="-fx-text-fill: black;" text="Tipologia di Visita:" />
+        <Button fx:id="cercaButton" layoutX="541.0" layoutY="73.0" mnemonicParsing="false" onAction="#effettuaRiercaSlot" prefHeight="25.0" prefWidth="82.0" style="-fx-text-fill: black;" text="Cerca Slot" />
+        <TableView fx:id="SlotTableView" layoutX="49.0" layoutY="167.0" prefHeight="230.0" prefWidth="616.0">
+            <columns>
+                <!-- <TableColumn fx:id="dataTurnoTableColumn" prefWidth="85.0" text="Data" />-->
+                <TableColumn fx:id="visitaTableColumn" prefWidth="99.0" text="Visita" />
+                <TableColumn fx:id="oraInizioTableColumn" prefWidth="99.0" text="Ora Inizio" />
+                <TableColumn fx:id="oraFineTableColumn" prefWidth="99.0" text="Ora Fine" />
+                <TableColumn fx:id="durataTableColumn" prefWidth="99.0" text="Durata" />
+                <TableColumn fx:id="prezzoTableColumn" prefWidth="99.0" text="Prezzo" />
+                <TableColumn fx:id="prenotaTableColumn" prefWidth="120.0" text="Prenota" />
+            </columns>
+        </TableView>
+        <Separator layoutX="49.0" layoutY="104.0" prefHeight="6.0" prefWidth="592.0" />
+        <Separator layoutX="46.0" layoutY="55.0" prefHeight="6.0" prefWidth="598.0" />
+        <Label layoutX="297.0" layoutY="135.0" text="Turni liberi prenotabili:" />
+        <Label fx:id="SlotNonDisponibiliLabel" layoutX="252.0" layoutY="110.0" prefHeight="25.0" prefWidth="268.0" textFill="RED">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Text layoutX="280.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: black;" text="Prenota uno Slot Libero">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <ChoiceBox fx:id="visiteChoiceBoxField" layoutX="374.0" layoutY="73.0" prefHeight="25.0" prefWidth="156.0" />
+      <Label layoutX="61.0" layoutY="77.0" style="-fx-text-fill: black;" text="Utente:" />
+      <ChoiceBox fx:id="utentiChoiceBoxField" layoutX="107.0" layoutY="73.0" prefHeight="25.0" prefWidth="156.0" />
+    </children>
+
+</AnchorPane>

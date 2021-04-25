@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox prefHeight="55.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.HomeController">
+<AnchorPane prefHeight="490.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.HomeController">
    <children>
       <Label fx:id="benvenutoLabel" prefHeight="51.0" prefWidth="599.0" text="Benvenuto">
          <font>
@@ -15,8 +15,17 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </Label>
+
+      <TableView fx:id="TurniTableView" layoutX="21.0" layoutY="120.0" prefHeight="250.0" prefWidth="633.0">
+         <columns>
+            <TableColumn fx:id="dataTurnoTableColumn" prefWidth="90.0" text="Data" />
+            <TableColumn fx:id="medicoTableColumn" prefWidth="90.0" text="Medico" />
+            <TableColumn fx:id="specializzazioneTableColumn" prefWidth="129.0" text="Specializzazione" />
+            <TableColumn fx:id="oraInizioTableColumn" prefWidth="119.0" text="Ora Inizio" />
+            <TableColumn fx:id="oraFineTableColumn" prefWidth="106.0" text="Ora Fine" />
+            <TableColumn fx:id="prenotaTableColumn" prefWidth="98.0" text="Prenota" />
+         </columns>
+      </TableView>
+      <Label layoutX="230.0" layoutY="89.0" text="Vista in tempo reale dello Studio Medico" />
    </children>
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
-</VBox>
+</AnchorPane>

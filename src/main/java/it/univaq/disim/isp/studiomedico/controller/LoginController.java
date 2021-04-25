@@ -8,6 +8,7 @@ import it.univaq.disim.isp.studiomedico.business.exceptions.UtenteNotFoundExcept
 import it.univaq.disim.isp.studiomedico.business.StudioMedicoBusinessFactory;
 import it.univaq.disim.isp.studiomedico.business.UtenteService;
 import it.univaq.disim.isp.studiomedico.domain.Utente;
+import it.univaq.disim.isp.studiomedico.utility.BCrypt;
 import it.univaq.disim.isp.studiomedico.view.ViewDispatcher;
 import it.univaq.disim.isp.studiomedico.view.ViewException;
 import javafx.event.ActionEvent;
@@ -63,9 +64,15 @@ public class LoginController implements Initializable, DataInitializable<Object>
 	@FXML // Autenticazione
 	private void loginAction(ActionEvent event) throws BusinessException, UtenteNotFoundException {
 		try {
-			Utente utente = utenteService.autenticazione(email.getText(), password.getText());
-			loginErrorLabel.setText("Email e/o password corretti!");
-			manage.loggedIn(utente);
+			Utente utente = utenteService.autenticazione(email.getText());
+			String candidate = password.getText();
+			if (BCrypt.checkpw(candidate,utente.getPassword())) {
+				loginErrorLabel.setText("Email e/o password corretti!");
+				manage.loggedIn(utente);
+			}
+			else {
+				loginErrorLabel.setText("Email e/o password errati!");
+			}
 		} catch (UtenteNotFoundException e) {
 			loginErrorLabel.setText("Email e/o password errati!");
 		} catch (BusinessException e) {

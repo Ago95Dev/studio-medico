@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="522.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.StoricoTurniController">
+    <children>
+        <Text layoutX="288.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: black;" text="Elenco dei Turni">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <TableView fx:id="TurniTableView" layoutX="21.0" layoutY="102.0" prefHeight="368.0" prefWidth="661.0">
+            <columns>
+                <TableColumn fx:id="dataTableColumn" prefWidth="94.0" text="Data" />
+                <TableColumn fx:id="oraInizioTableColumn" prefWidth="186.0" text="Ora Inizio" />
+                <TableColumn fx:id="oraFineTableColumn" prefWidth="186.0" text="Ora Fine" />
+                <TableColumn fx:id="visiteTableColumn" prefWidth="194.0" text="Prenotazioni" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

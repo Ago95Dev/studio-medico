@@ -90,4 +90,9 @@ public class Utente {
 	public void setDataDiNascita(Date dataDiNascita) {
 		this.dataDiNascita = dataDiNascita;
 	}
+
+	@Override
+	public String toString() {
+		return getNome() + " " + getCognome();
+	}
 }

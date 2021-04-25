@@ -7,6 +7,7 @@ import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
 import it.univaq.disim.isp.studiomedico.domain.Utente;
 import it.univaq.disim.isp.studiomedico.view.ViewDispatcher;
 import it.univaq.disim.isp.studiomedico.view.ViewException;
+import javafx.beans.value.ObservableBooleanValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,6 +47,8 @@ public class RegistrazioneController implements Initializable, DataInitializable
 
     @FXML
     private Button registraButton;
+    @FXML
+    private ObservableBooleanValue checked;
 
     @FXML
     private Button annullaButton;
@@ -69,10 +72,12 @@ public class RegistrazioneController implements Initializable, DataInitializable
     //inizializzazione
     public void initialize(URL location, ResourceBundle resources) {
         registerErrorLabel.setVisible(false);
+        GDPRCheckBoxField.setSelected(false);
         registraButton.disableProperty()
                 .bind(CodiceFiscaleTextField.textProperty().isEmpty().or(NomeTextField.textProperty().isEmpty()).or(CognomeTextField.textProperty().isEmpty())
                         .or(PasswordTextField.textProperty().isEmpty()).or(CPasswordTextField.textProperty().isEmpty()).or(TelefonoTextField.textProperty().isEmpty())
-                        .or(LuogoTextField.textProperty().isEmpty()).or(Data.valueProperty().isNull()));
+                        .or(LuogoTextField.textProperty().isEmpty()).or(Data.valueProperty().isNull())
+                        .or(GDPRCheckBoxField.selectedProperty().not()));
     }
 
     // registrazione utente

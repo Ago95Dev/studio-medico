@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="522.0" prefWidth="703.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.StoricoVisiteController">
+    <children>
+        <Text layoutX="239.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: black;" text="Elenco delle Visite Prenotate">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <TableView fx:id="PrenotazioniTableView" layoutX="21.0" layoutY="102.0" prefHeight="368.0" prefWidth="684.0">
+            <columns>
+                <TableColumn fx:id="dataTableColumn" prefWidth="90.0" text="Data" />
+                <TableColumn fx:id="visitaTableColumn" prefWidth="90.0" text="Visita" />
+                <TableColumn fx:id="MedicoTableColumn" prefWidth="90.0" text="Medico" />
+                <TableColumn fx:id="oraInizioTableColumn" prefWidth="70.0" text="Ora Inizio" />
+                <TableColumn fx:id="oraFineTableColumn" prefWidth="70.0" text="Ora Fine" />
+                <TableColumn fx:id="durataTableColumn" prefWidth="70.0" text="Durata" />
+                <TableColumn fx:id="prezzoTableColumn" prefWidth="70.0" text="Prezzo" />
+                <TableColumn fx:id="annullaTableColumn" prefWidth="133.0" text="Annulla" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

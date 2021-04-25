@@ -8,6 +8,7 @@ import it.univaq.disim.isp.studiomedico.domain.Turno;
 import it.univaq.disim.isp.studiomedico.domain.Visita;
 import javafx.scene.control.ChoiceBox;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface PrenotazioneService {
@@ -37,4 +38,6 @@ public interface PrenotazioneService {
     void annullaPrenotazione(Integer id);
 
     void prenotaVisita(Prenotazione prenotazionestore);
+
+    List<Turno> getTurniByNow(LocalDate now);
 }
