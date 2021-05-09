@@ -6,6 +6,7 @@ import it.univaq.disim.isp.studiomedico.business.UtenteService;
 import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
 import it.univaq.disim.isp.studiomedico.domain.*;
 import it.univaq.disim.isp.studiomedico.view.ViewDispatcher;
+import javafx.animation.PauseTransition;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -63,6 +64,8 @@ public class PrenotazioneTelefonicaSlotLiberiController implements Initializable
     private Prenotazione prenotazionestore;
     private UtenteService utenteService;
     private List<Utente> listaUtenti = new LinkedList<>();
+    @FXML
+    private Label PrenotazioneEffettuataLabel;
 
 
     //avvio controller della vista
@@ -283,5 +286,12 @@ public class PrenotazioneTelefonicaSlotLiberiController implements Initializable
         prenotazionestore.setOrafine(prenotazione.getOrafine());
         prenotazionestore.setVisita(this.visita);
         prenotazioneService.prenotaVisita(prenotazionestore);
+        PrenotazioneEffettuataLabel.setVisible(true);
+        PauseTransition visiblePause = new PauseTransition(javafx.util.Duration.seconds(3));
+        visiblePause.setOnFinished(
+                event -> PrenotazioneEffettuataLabel.setVisible(false)
+        );
+        visiblePause.play();
+        SlotTableView.getItems().clear();
     }
 }

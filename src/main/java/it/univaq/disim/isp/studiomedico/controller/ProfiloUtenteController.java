@@ -97,6 +97,7 @@ public class ProfiloUtenteController implements Initializable, DataInitializable
     }
 
     public void initializeData(Utente utente) {
+        pagamentoTextField.clear();
         setItemsVisibility(utente);
         NomeTextField.setText(utente.getNome());
         CognomeTextField.setText(utente.getCognome());

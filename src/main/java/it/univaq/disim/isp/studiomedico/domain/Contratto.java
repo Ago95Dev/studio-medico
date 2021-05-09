@@ -30,16 +30,17 @@ public class Contratto {
     }
 
     public String stampaContratto(int numeropresenze, int numeroprestazioni) {
+        float totale = 0;
         switch (tipo){
             case Forfettario:
                 break;
             case Presenze:
-                this.quota *= numeropresenze;
+                totale = this.quota * numeropresenze;
                 break;
             case Prestazioni:
-                this.quota *= numeroprestazioni;
+                totale = quota * numeroprestazioni;
                 break;
         }
-        return this.quota + "€";
+        return totale + "€";
     }
 }

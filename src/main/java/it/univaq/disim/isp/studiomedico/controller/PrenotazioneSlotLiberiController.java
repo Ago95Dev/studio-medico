@@ -5,6 +5,7 @@ import it.univaq.disim.isp.studiomedico.business.StudioMedicoBusinessFactory;
 import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
 import it.univaq.disim.isp.studiomedico.domain.*;
 import it.univaq.disim.isp.studiomedico.view.ViewDispatcher;
+import javafx.animation.PauseTransition;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -16,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 
 import java.net.URL;
@@ -48,6 +50,9 @@ public class PrenotazioneSlotLiberiController implements Initializable, DataInit
     public TableView<Prenotazione> SlotTableView;
     @FXML
     public Button cercaButton;
+    @FXML
+    public Label PrenotazioneEffettuataLabel;
+
     @FXML
     private Label SlotNonDisponibiliLabel;
 
@@ -240,13 +245,19 @@ public class PrenotazioneSlotLiberiController implements Initializable, DataInit
         else {
             // Questo controllo sarebbe da testare accuratamente se funziona in modo corretto
             List<Prenotazione> listaPrenotazioniUtente = prenotazioneService.getPrenotazioniByIdPaziente(manage.getUtenteloggato().getId());
-            for (Prenotazione p: listaPrenotazioniUtente){
-                for (Prenotazione s: listaSlotPrenotabili) {
-                    if (p.getTurno().getData().equals(turno.getData())){
-                        if ((p.getOrainizio().equals(s.getOrainizio()) && p.getOrafine().equals(s.getOrafine())) ||
+            if (!listaPrenotazioniUtente.isEmpty()){
+                for (Prenotazione p: listaPrenotazioniUtente){
+                    for (Prenotazione s: listaSlotPrenotabili) {
+                        if (p.getTurno().getData().equals(turno.getData())){
+/*                            if ((p.getOrainizio().equals(s.getOrainizio()) && p.getOrafine().equals(s.getOrafine())) ||
                                 (p.getOrainizio().isAfter(s.getOrainizio()) && p.getOrafine().isAfter(s.getOrafine())) ||
-                                (p.getOrainizio().isBefore(s.getOrainizio()) && p.getOrafine().isBefore(s.getOrafine())))
-                            listaSlotPrenotabili.remove(s);
+                                (p.getOrainizio().isBefore(s.getOrainizio()) && p.getOrafine().isBefore(s.getOrafine()))) {
+                                listaSlotPrenotabili.remove(s);
+                            }*/
+                            if ((p.getOrainizio().equals(s.getOrainizio()) && p.getOrafine().equals(s.getOrafine())) || (p.getOrainizio().isAfter(s.getOrainizio())) && p.getOrainizio().isBefore( s.getOrafine()) || (p.getOrafine().isAfter( s.getOrainizio() )) && p.getOrafine().isBefore(s.getOrafine())){
+                                listaSlotPrenotabili.remove(s);
+                            }
+                        }
                     }
                 }
             }
@@ -264,5 +275,18 @@ public class PrenotazioneSlotLiberiController implements Initializable, DataInit
         prenotazionestore.setOrafine(prenotazione.getOrafine());
         prenotazionestore.setVisita(this.visita);
         prenotazioneService.prenotaVisita(prenotazionestore);
+        PrenotazioneEffettuataLabel.setVisible(true);
+        PauseTransition visiblePause = new PauseTransition(javafx.util.Duration.seconds(3));
+        visiblePause.setOnFinished(
+                event -> PrenotazioneEffettuataLabel.setVisible(false)
+        );
+        visiblePause.play();
+        SlotTableView.getItems().clear();
+/*        try {
+            manage.wait(50000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        manage.renderView("prenotazioneslotliberi", turno);*/
     }
 }
