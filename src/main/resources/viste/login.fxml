@@ -33,7 +33,7 @@
             <Image url="@../icons/email.png" />
          </image>
       </ImageView>
-      <JFXPasswordField fx:id="password" focusColor="#2196f3" layoutX="409.0" layoutY="267.0" prefHeight="27.0" prefWidth="170.0" promptText="Password" style="-fx-background-color: #ffffff; -fx-border-color: #151928;" />
+      <JFXPasswordField fx:id="password" focusColor="#2196f3" layoutX="401.0" layoutY="267.0" prefHeight="27.0" prefWidth="170.0" promptText="Password" style="-fx-background-color: #ffffff; -fx-border-color: #151928;" />
       <JFXButton fx:id="loginButton" layoutX="508.0" layoutY="312.0" onAction="#loginAction" prefHeight="39.0" prefWidth="70.0" style="-fx-background-color: #2196f3; -fx-border-color: #a0a2ab;" text="Login" textFill="WHITE">
          <font>
             <Font size="14.0" />
