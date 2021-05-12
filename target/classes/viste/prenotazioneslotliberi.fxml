@@ -34,6 +34,11 @@
             </font>
         </Text>
         <ChoiceBox fx:id="visiteChoiceBoxField" layoutX="267.0" layoutY="73.0" prefHeight="25.0" prefWidth="156.0" />
+      <Label fx:id="PrenotazioneEffettuataLabel" layoutX="248.0" layoutY="429.0" text="Prenotazione Effettuata con Successo!" textFill="#06ab2a" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
     </children>
 
 

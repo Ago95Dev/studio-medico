@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.PrenotazioneTelefonicaSlotLiberiController">
+<AnchorPane prefHeight="515.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.PrenotazioneTelefonicaSlotLiberiController">
 
     <children>
         <Label layoutX="269.0" layoutY="77.0" style="-fx-text-fill: black;" text="Tipologia di Visita:" />
@@ -36,6 +36,11 @@
         <ChoiceBox fx:id="visiteChoiceBoxField" layoutX="374.0" layoutY="73.0" prefHeight="25.0" prefWidth="156.0" />
       <Label layoutX="61.0" layoutY="77.0" style="-fx-text-fill: black;" text="Utente:" />
       <ChoiceBox fx:id="utentiChoiceBoxField" layoutX="107.0" layoutY="73.0" prefHeight="25.0" prefWidth="156.0" />
+        <Label fx:id="PrenotazioneEffettuataLabel" layoutX="248.0" layoutY="429.0" text="Prenotazione Effettuata con Successo!" textFill="#06ab2a" visible="false">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
     </children>
 
 </AnchorPane>
