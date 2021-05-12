@@ -1,6 +1,7 @@
 package it.univaq.disim.isp.studiomedico.controller;
 
 
+import com.jfoenix.controls.JFXButton;
 import it.univaq.disim.isp.studiomedico.business.StudioMedicoBusinessFactory;
 import it.univaq.disim.isp.studiomedico.business.UtenteService;
 import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
@@ -12,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -46,12 +48,9 @@ public class RegistrazioneController implements Initializable, DataInitializable
     private PasswordField CPasswordTextField;
 
     @FXML
-    private Button registraButton;
+    private JFXButton registraButton;
     @FXML
     private ObservableBooleanValue checked;
-
-    @FXML
-    private Button annullaButton;
 
     private Utente utente;
 
@@ -97,7 +96,7 @@ public class RegistrazioneController implements Initializable, DataInitializable
         manage.logout();
     }
 
-    public void annullaAction(ActionEvent actionEvent) throws ViewException {
+    public void annullaAction(MouseEvent event) throws ViewException {
         manage.logout();
     }
 }
