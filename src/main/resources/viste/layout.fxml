@@ -4,26 +4,43 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.LayoutController">
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.LayoutController">
    <left>
-      <VBox fx:id="menuBar" prefHeight="440.0" prefWidth="164.0" style="-fx-background-color: #000000;"
-            BorderPane.alignment="CENTER_LEFT"/>
+      <VBox fx:id="menuBar" prefHeight="440.0" prefWidth="164.0" style="-fx-background-color: #151928; -fx-border-width: 0.5; -fx-border-color: #a0a2ab;" BorderPane.alignment="CENTER_LEFT" />
    </left>
    <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="600.0" spacing="10.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="600.0" spacing="10.0" style="-fx-background-color: #2D3447; -fx-border-color: #a0a2ab;" BorderPane.alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Studio Medico" textAlignment="CENTER" wrappingWidth="138.6367222070694">
+            <ImageView fx:id="esciButton" fitHeight="30.0" fitWidth="29.0" onMouseClicked="#esciAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/grey_back_icon.png" />
+               </image>
+            </ImageView>
+            <Text fill="#a0a2ab" onMouseClicked="#esciAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Logout" wrappingWidth="49.507232666015625">
                <font>
-                  <Font size="28.0" />
+                  <Font size="14.0" />
                </font>
             </Text>
             <Separator orientation="VERTICAL" prefHeight="87.0" prefWidth="462.0" visible="false" />
-            <ImageView fx:id="esciButton" fitHeight="21.0" fitWidth="39.0"  onMouseClicked="#esciAction" pickOnBounds="true" preserveRatio="true">
+            <Text fill="#2196f3" strokeType="OUTSIDE" strokeWidth="0.0" text="Studio Medico" textAlignment="JUSTIFY" wrappingWidth="83.4367481470108">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fill="#a0a2ab" strokeType="OUTSIDE" strokeWidth="0.0" text="A2FL">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="65.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@logout.png" />
+                  <Image url="@../icons/Logo.png" />
                </image>
             </ImageView>
          </children>

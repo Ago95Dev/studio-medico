@@ -3,6 +3,9 @@ package it.univaq.disim.isp.studiomedico.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
 import it.univaq.disim.isp.studiomedico.business.exceptions.UtenteNotFoundException;
 import it.univaq.disim.isp.studiomedico.business.StudioMedicoBusinessFactory;
@@ -20,25 +23,25 @@ import javafx.scene.control.*;
 public class LoginController implements Initializable, DataInitializable<Object> {
 
 	@FXML
-	public Button Registrazione;
+	public JFXButton Registrazione;
 
 	@FXML
-	private TextField email;
+	private JFXTextField email;
 
 	@FXML
-	private PasswordField password;
+	private JFXPasswordField password;
 
 	@FXML
 	private Label loginErrorLabel;
 
 	@FXML
-	private Button loginButton;
+	private JFXButton loginButton;
 
 /*	@FXML
 	private TextField label;*/
 
-/*	@FXML
-	private CheckBox checkbox;*/
+	@FXML
+	private CheckBox showPassword;
 
 	//dichiarazione variabili
 	private ViewDispatcher manage;
