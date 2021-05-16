@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="490.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.HomeController">
    <children>
-      <Label fx:id="benvenutoLabel" prefHeight="51.0" prefWidth="599.0" text="Benvenuto">
+      <Label fx:id="benvenutoLabel" layoutX="159.0" layoutY="21.0" prefHeight="51.0" prefWidth="486.0" text="Benvenuto" textFill="#2196f3">
          <font>
             <Font size="18.0" />
          </font>
@@ -16,7 +18,7 @@
          </padding>
       </Label>
 
-      <TableView fx:id="TurniTableView" layoutX="21.0" layoutY="120.0" prefHeight="250.0" prefWidth="633.0">
+      <TableView fx:id="TurniTableView" layoutX="27.0" layoutY="120.0" prefHeight="250.0" prefWidth="633.0" style="-fx-background-color: #a0a2ab;">
          <columns>
             <TableColumn fx:id="dataTurnoTableColumn" prefWidth="90.0" text="Data" />
             <TableColumn fx:id="medicoTableColumn" prefWidth="90.0" text="Medico" />
@@ -25,7 +27,13 @@
             <TableColumn fx:id="oraFineTableColumn" prefWidth="106.0" text="Ora Fine" />
             <TableColumn fx:id="prenotaTableColumn" prefWidth="98.0" text="Prenota" />
          </columns>
+         <opaqueInsets>
+            <Insets left="10.0" />
+         </opaqueInsets>
       </TableView>
-      <Label layoutX="230.0" layoutY="89.0" text="Vista in tempo reale dello Studio Medico" />
+      <Label layoutX="209.0" layoutY="82.0" text="Vista in tempo reale dello Studio Medico" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
    </children>
 </AnchorPane>

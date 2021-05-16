@@ -37,8 +37,8 @@ public class LoginController implements Initializable, DataInitializable<Object>
 	@FXML
 	private JFXButton loginButton;
 
-/*	@FXML
-	private TextField label;*/
+	@FXML
+	private TextField textPsw;
 
 	@FXML
 	private CheckBox showPassword;
@@ -93,20 +93,20 @@ public class LoginController implements Initializable, DataInitializable<Object>
 	}
 
 	//metodo utilizzato dalla checkbox per mostrare la password
-/*	@FXML
+	@FXML
 	public void mostrapass(ActionEvent e) {
-		if (checkbox.isSelected()) {
+		if (showPassword.isSelected()) {
 			String password2 = password.getText();
-			label.setText(password2);
-			label.setVisible(true);
+			textPsw.setText(password2);
+			textPsw.setVisible(true);
 			password.setVisible(false);
 		} else {
-			label.setVisible(false);
+			textPsw.setVisible(false);
 			password.setVisible(true);
-			password.setText(label.getText());
+			password.setText(textPsw.getText());
 		}
 
 
-	}*/
+	}
 
 }
