@@ -1,47 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="703.0" style="-fx-background-color: #cccccc;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.RegistrazioneMedicoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="703.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.RegistrazioneMedicoController">
     <children>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="235.0" layoutY="32.0" prefHeight="39.0" prefWidth="255.0" text="Registrazione Medico" textAlignment="CENTER" textFill="#000dff">
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="235.0" layoutY="32.0" prefHeight="39.0" prefWidth="255.0" text="Registrazione Medico" textAlignment="CENTER" textFill="#2196f3">
             <font>
                 <Font size="24.0" />
             </font>
         </Label>
-        <Button fx:id="registraButton" layoutX="504.0" layoutY="438.0" mnemonicParsing="false" onAction="#registrazioneAction" prefHeight="25.0" prefWidth="110.0" text="Registra" />
-        <TextField fx:id="NomeTextField" layoutX="160.0" layoutY="91.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
-        <Label fx:id="NomeLabel" layoutX="116.0" layoutY="96.0" text="Nome: " />
-        <Label layoutX="97.0" layoutY="137.0" text="Cognome: " />
-        <Button fx:id="annullaButton" layoutX="125.0" layoutY="438.0" mnemonicParsing="false" onAction="#annullaAction" prefHeight="25.0" prefWidth="110.0" text="Annulla" />
-        <Label layoutX="79.0" layoutY="183.0" text="Luogo nascita:" />
-        <TextField fx:id="CognomeTextField" layoutX="159.0" layoutY="132.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
-        <TextField fx:id="LuogoTextField" layoutX="160.0" layoutY="178.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
-        <TextField fx:id="EmailTextField" layoutX="417.0" layoutY="91.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
-        <TextField fx:id="CodiceFiscaleTextField" layoutX="417.0" layoutY="132.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
-        <Label layoutX="377.0" layoutY="96.0" text="Email:" />
-        <Label layoutX="339.0" layoutY="137.0" text="Codice Fiscale:" />
-        <Label layoutX="344.0" layoutY="183.0" text="Data Nascita:" />
+        <Button fx:id="registraButton" layoutX="466.0" layoutY="438.0" mnemonicParsing="false" onAction="#registrazioneAction" prefHeight="25.0" prefWidth="110.0" text="Registra" />
+        <TextField fx:id="NomeTextField" layoutX="160.0" layoutY="91.0" style="-fx-border-width: 0.5; -fx-border-color: #a0a2ab;" />
+        <Label fx:id="NomeLabel" layoutX="116.0" layoutY="96.0" text="Nome: " textFill="#a0a2ab" />
+        <Label layoutX="97.0" layoutY="137.0" text="Cognome: " textFill="#a0a2ab" />
+        <Button fx:id="annullaButton" layoutX="160.0" layoutY="438.0" mnemonicParsing="false" onAction="#annullaAction" prefHeight="25.0" prefWidth="110.0" text="Annulla" />
+        <Label layoutX="79.0" layoutY="183.0" text="Luogo nascita:" textFill="#a0a2ab" />
+        <TextField fx:id="CognomeTextField" layoutX="159.0" layoutY="132.0" style="-fx-border-width: 0.5; -fx-border-color: #a0a2ab;" />
+        <TextField fx:id="LuogoTextField" layoutX="160.0" layoutY="178.0" style="-fx-border-width: 0.5; -fx-border-color: #a0a2ab;" />
+        <TextField fx:id="EmailTextField" layoutX="417.0" layoutY="91.0" style="-fx-border-width: 0.5; -fx-border-color: #a0a2ab;" />
+        <TextField fx:id="CodiceFiscaleTextField" layoutX="417.0" layoutY="132.0" style="-fx-border-width: 0.5; -fx-border-color: #a0a2ab;" />
+        <Label layoutX="377.0" layoutY="96.0" text="Email:" textFill="#a0a2ab" />
+        <Label layoutX="339.0" layoutY="137.0" text="Codice Fiscale:" textFill="#a0a2ab" />
+        <Label layoutX="344.0" layoutY="183.0" text="Data Nascita:" textFill="#a0a2ab" />
         <DatePicker fx:id="Data" layoutX="417.0" layoutY="178.0" prefHeight="26.0" prefWidth="151.0" />
-        <PasswordField fx:id="PasswordTextField" layoutX="159.0" layoutY="222.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
-        <PasswordField fx:id="CPasswordTextField" layoutX="159.0" layoutY="261.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
-        <Label layoutX="100.0" layoutY="227.0" text="Password:" />
-        <Label layoutX="47.0" layoutY="266.0" text="Conferma Password:" />
-        <Label layoutX="320.0" layoutY="227.0" text="Numero Telefono:" />
-        <TextField fx:id="TelefonoTextField" layoutX="417.0" layoutY="222.0" style="-fx-border-width: 0.5; -fx-border-color: #000000;" />
-        <Label fx:id="registerErrorLabel" layoutX="352.0" layoutY="266.0" text="Le Password inserite non combaciano!" textFill="#eb0000" />
-      <Label layoutX="100.0" layoutY="310.0" text="Contratto:" />
-      <Label layoutX="65.0" layoutY="356.0" text="Specializzazione:" />
+        <PasswordField fx:id="PasswordTextField" layoutX="159.0" layoutY="222.0" style="-fx-border-width: 0.5; -fx-border-color: #a0a2ab;" />
+        <PasswordField fx:id="CPasswordTextField" layoutX="159.0" layoutY="261.0" style="-fx-border-width: 0.5; -fx-border-color: #a0a2ab;" />
+        <Label layoutX="100.0" layoutY="227.0" text="Password:" textFill="#a0a2ab" />
+        <Label layoutX="47.0" layoutY="266.0" text="Conferma Password:" textFill="#a0a2ab" />
+        <Label layoutX="320.0" layoutY="227.0" text="Numero Telefono:" textFill="#a0a2ab" />
+        <TextField fx:id="TelefonoTextField" layoutX="417.0" layoutY="222.0" style="-fx-border-width: 0.5; -fx-border-color: #a0a2ab;" />
+      <Label layoutX="100.0" layoutY="310.0" text="Contratto:" textFill="#a0a2ab" />
+      <Label layoutX="65.0" layoutY="356.0" text="Specializzazione:" textFill="#a0a2ab" />
       <ChoiceBox fx:id="ContrattoChoiceBox" layoutX="160.0" layoutY="306.0" prefWidth="150.0" />
       <ChoiceBox fx:id="SpecializzazioneChoiceBox" layoutX="160.0" layoutY="352.0" prefWidth="150.0" />
-      <Label layoutX="352.0" layoutY="356.0" text="Ora Inizio:" />
-      <Label layoutX="493.0" layoutY="356.0" text="Ora Fine:" />
-      <Label layoutX="378.0" layoutY="310.0" text="Turno:" />
-      <JFXDatePicker fx:id="DatePickerTurno" layoutX="436.0" layoutY="305.0" prefHeight="28.0" prefWidth="151.0" />
-      <JFXTimePicker fx:id="TimePickerOraInizio" layoutX="412.0" layoutY="345.0" prefHeight="39.0" prefWidth="70.0" />
-      <JFXTimePicker fx:id="TimePickerOraFine" layoutX="552.0" layoutY="345.0" prefHeight="39.0" prefWidth="70.0" />
+      <Label layoutX="325.0" layoutY="356.0" text="Ora Inizio:" textFill="#a0a2ab" />
+      <Label layoutX="466.0" layoutY="356.0" text="Ora Fine:" textFill="#a0a2ab" />
+      <Label layoutX="334.0" layoutY="310.0" text="Turno:" textFill="#a0a2ab" />
+      <Label fx:id="registerErrorLabel" layoutX="330.0" layoutY="262.0" text="Le Password inserite non combaciano!" textFill="#fa2133">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <JFXTimePicker fx:id="TimePickerOraInizio" defaultColor="#2196f3" layoutX="389.0" layoutY="351.0" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" />
+      <JFXTimePicker fx:id="TimePickerOraFine" defaultColor="#2196f3" layoutX="521.0" layoutY="351.0" prefHeight="28.0" prefWidth="75.0" style="-fx-background-color: #ffffff;" />
+      <JFXDatePicker fx:id="DatePickerTurno" defaultColor="#2196f3" layoutX="377.0" layoutY="305.0" prefHeight="18.0" prefWidth="137.0" style="-fx-background-color: #ffffff;" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="#a0a2ab" height="394.0" layoutX="46.0" layoutY="79.0" opacity="0.11" stroke="BLACK" strokeType="INSIDE" width="605.0" />
     </children>
 </AnchorPane>
