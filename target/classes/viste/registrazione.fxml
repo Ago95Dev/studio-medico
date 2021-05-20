@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="703.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.RegistrazioneController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="266.0" layoutY="42.0" prefHeight="39.0" prefWidth="170.0" text="Registrazione" textAlignment="CENTER" textFill="#2196f3">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="274.0" layoutY="54.0" prefHeight="39.0" prefWidth="170.0" text="Registrazione" textAlignment="CENTER" textFill="#2196f3">
          <font>
             <Font size="24.0" />
          </font>
@@ -57,7 +57,7 @@
             <Image url="@../icons/grey_back_icon.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="icon" fitHeight="46.0" fitWidth="50.0" layoutX="424.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="icon" fitHeight="46.0" fitWidth="50.0" layoutX="432.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icons/registrazione_icon.png" />
          </image>
