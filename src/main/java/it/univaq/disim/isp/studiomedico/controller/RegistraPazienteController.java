@@ -1,5 +1,6 @@
 package it.univaq.disim.isp.studiomedico.controller;
 
+import com.jfoenix.controls.JFXButton;
 import it.univaq.disim.isp.studiomedico.business.StudioMedicoBusinessFactory;
 import it.univaq.disim.isp.studiomedico.business.UtenteService;
 import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
@@ -16,13 +17,13 @@ import java.util.ResourceBundle;
 public class RegistraPazienteController implements Initializable, DataInitializable<Utente>{
 
         @FXML
-        public Button registraButton;
+        public JFXButton registraButton;
         @FXML
         public TextField NomeTextField;
         @FXML
         public Label NomeLabel;
         @FXML
-        public Button annullaButton;
+        public JFXButton annullaButton;
         @FXML
         public TextField CognomeTextField;
         @FXML
@@ -43,8 +44,6 @@ public class RegistraPazienteController implements Initializable, DataInitializa
         public Label registerErrorLabel;
         @FXML
         public CheckBox GDPRCheckBoxField;
-        @FXML
-        public Button proseguiButton;
 
         private Utente utente;
 

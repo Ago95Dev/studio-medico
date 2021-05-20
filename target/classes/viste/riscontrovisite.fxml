@@ -6,14 +6,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.RiscontroVisiteController">
+<AnchorPane prefHeight="460.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.RiscontroVisiteController">
     <children>
-        <Text fill="#2196f3" layoutX="355.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: black;" text="Elenco delle Visite Prenotate">
+
+       <!-- <Text fill="#2196f3" layoutX="355.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: black;" text="Elenco delle Visite Prenotate"> -->
+
+        <Text fill="#2196f3" layoutX="309.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: black;" text="Elenco delle Visite Prenotate">
+
             <font>
                 <Font size="18.0" />
             </font>
         </Text>
-        <TableView fx:id="RiscontroTableView" layoutX="7.0" layoutY="81.0" prefHeight="368.0" prefWidth="921.0">
+        <TableView fx:id="RiscontroTableView" layoutX="16.0" layoutY="71.0" prefHeight="366.0" prefWidth="866.0" style="-fx-background-color: #a0a2ab;">
             <columns>
                 <TableColumn fx:id="dataTableColumn" prefWidth="90.0" text="Data" />
                 <TableColumn fx:id="visitaTableColumn" prefWidth="90.0" text="Visita" />
@@ -23,7 +27,7 @@
                 <TableColumn fx:id="oraFineTableColumn" prefWidth="90.0" text="Ora Fine" />
                 <TableColumn fx:id="durataTableColumn" prefWidth="73.0" text="Durata" />
                 <TableColumn fx:id="prezzoTableColumn" prefWidth="66.0" text="Prezzo" />
-                <TableColumn fx:id="riscontroTableColumn" prefWidth="246.0" text="Riscontro" />
+                <TableColumn fx:id="riscontroTableColumn" prefWidth="233.60003662109375" text="Riscontro" />
        <!--         <TableColumn fx:id="checkinTableColumn" prefWidth="90.0" text="Checkin" />
                 <TableColumn fx:id="checkoutTableColumn" prefWidth="90.0" text="Checkout" />-->
             </columns>
