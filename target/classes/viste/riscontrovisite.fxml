@@ -8,11 +8,7 @@
 
 <AnchorPane prefHeight="460.0" prefWidth="899.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.RiscontroVisiteController">
     <children>
-
-       <!-- <Text fill="#2196f3" layoutX="355.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: black;" text="Elenco delle Visite Prenotate"> -->
-
         <Text fill="#2196f3" layoutX="309.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: black;" text="Elenco delle Visite Prenotate">
-
             <font>
                 <Font size="18.0" />
             </font>
