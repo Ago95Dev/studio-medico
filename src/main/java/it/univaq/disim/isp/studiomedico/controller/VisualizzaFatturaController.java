@@ -1,5 +1,6 @@
 package it.univaq.disim.isp.studiomedico.controller;
 
+import com.jfoenix.controls.JFXButton;
 import it.univaq.disim.isp.studiomedico.business.PrenotazioneService;
 import it.univaq.disim.isp.studiomedico.business.SegretariaService;
 import it.univaq.disim.isp.studiomedico.business.StudioMedicoBusinessFactory;
@@ -21,9 +22,9 @@ import java.util.ResourceBundle;
 
 public class VisualizzaFatturaController implements Initializable,  DataInitializable<Prenotazione>{
     @FXML
-    public Button backButton;
+    public JFXButton backButton;
     @FXML
-    public Button stampaButton;
+    public JFXButton stampaButton;
     @FXML
     public TextArea FatturaTextArea;
 

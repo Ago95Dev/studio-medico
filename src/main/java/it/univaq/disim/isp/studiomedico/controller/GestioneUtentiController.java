@@ -1,5 +1,6 @@
 package it.univaq.disim.isp.studiomedico.controller;
 
+import com.jfoenix.controls.JFXButton;
 import it.univaq.disim.isp.studiomedico.business.StudioMedicoBusinessFactory;
 import it.univaq.disim.isp.studiomedico.business.UtenteService;
 import it.univaq.disim.isp.studiomedico.business.exceptions.BusinessException;
@@ -30,11 +31,11 @@ public class GestioneUtentiController implements Initializable, DataInitializabl
     @FXML
     public Label benvenutoLabel;
     @FXML
-    public Button registraPazienteButton;
+    public JFXButton registraPazienteButton;
     @FXML
-    public Button registraMedicoButton;
+    public JFXButton registraMedicoButton;
     @FXML
-    public Button prenotazioneTelefonicaButton;
+    public JFXButton prenotazioneTelefonicaButton;
 
 
     private Utente utente;
