@@ -36,7 +36,11 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Label>
+<<<<<<< HEAD
         <Text fill="#a0a2ab" layoutX="280.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: black;" text="Prenota una Visita">
+=======
+        <Text fill="#2196f3" layoutX="247.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: black;" text="Prenota una Visita">
+>>>>>>> 2131160234b3e5a188322adff8fe06015fe859ab
             <font>
                 <Font size="18.0" />
             </font>

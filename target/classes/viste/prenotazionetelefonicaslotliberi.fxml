@@ -35,13 +35,17 @@
                 <Font name="System Bold" size="16.0" />
             </font>
         </Label>
-        <Text fill="#2196f3" layoutX="280.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: black;" text="Prenota uno Slot Libero">
+
+        <Text fill="#2196f3" layoutX="238.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: black;" text="Prenota uno Slot Libero">
+
             <font>
                 <Font size="18.0" />
             </font>
         </Text>
         <ChoiceBox fx:id="visiteChoiceBoxField" layoutX="374.0" layoutY="73.0" prefHeight="25.0" prefWidth="156.0" />
-      <Label layoutX="61.0" layoutY="77.0" text="Utente:" />
+
+      <Label layoutX="61.0" layoutY="77.0" text="Utente:" textFill="#a0a2ab" />
+
       <ChoiceBox fx:id="utentiChoiceBoxField" layoutX="107.0" layoutY="73.0" prefHeight="25.0" prefWidth="156.0" />
         <Label fx:id="PrenotazioneEffettuataLabel" layoutX="248.0" layoutY="429.0" text="Prenotazione Effettuata con Successo!" textFill="#06ab2a" visible="false">
             <font>
