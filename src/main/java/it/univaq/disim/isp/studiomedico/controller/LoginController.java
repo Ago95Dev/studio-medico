@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 
 //classe LoginController che implementa Initializable e DataInitializable>Object>
 public class LoginController implements Initializable, DataInitializable<Object> {
@@ -32,7 +33,7 @@ public class LoginController implements Initializable, DataInitializable<Object>
 	private JFXPasswordField password;
 
 	@FXML
-	private Label loginErrorLabel;
+	private Text loginErrorLabel;
 
 	@FXML
 	private JFXButton loginButton;

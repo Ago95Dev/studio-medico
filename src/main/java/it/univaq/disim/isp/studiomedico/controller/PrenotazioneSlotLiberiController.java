@@ -276,6 +276,7 @@ public class PrenotazioneSlotLiberiController implements Initializable, DataInit
         prenotazionestore.setVisita(this.visita);
         prenotazioneService.prenotaVisita(prenotazionestore);
         PrenotazioneEffettuataLabel.setVisible(true);
+        this.turno.setListaPrenotazioni((LinkedList<Prenotazione>) prenotazioneService.getPrenotazioniByIdTurno(turno.getId()));
         PauseTransition visiblePause = new PauseTransition(javafx.util.Duration.seconds(3));
         visiblePause.setOnFinished(
                 event -> PrenotazioneEffettuataLabel.setVisible(false)

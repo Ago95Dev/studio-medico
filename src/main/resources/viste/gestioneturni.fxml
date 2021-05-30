@@ -18,11 +18,11 @@
         <TableView fx:id="TurniTableView" layoutX="5.0" layoutY="102.0" prefHeight="368.0" prefWidth="661.0" style="-fx-background-color: #a0a2ab;">
             <columns>
                 <TableColumn fx:id="MedicoTableColumn" prefWidth="125.0" text="Medico" />
-                <TableColumn fx:id="dataTableColumn" prefWidth="105.0" text="Giorno" />
+                <TableColumn fx:id="dataTableColumn" prefWidth="105.0" text="Giorno Inizio" />
                 <TableColumn fx:id="oraInizioTableColumn" prefWidth="107.0" text="Ora Inizio" />
                 <TableColumn fx:id="oraFineTableColumn" prefWidth="107.0" text="Ora Fine" />
                 <TableColumn fx:id="accettaTableColumn" prefWidth="111.0" text="Accetta" />
-                <TableColumn fx:id="rifiutaTableColumn" prefWidth="105.0" text="Rifiuta" />
+                <TableColumn fx:id="rifiutaTableColumn" prefWidth="104.00002441406252" text="Rifiuta" />
             </columns>
          <opaqueInsets>
             <Insets />

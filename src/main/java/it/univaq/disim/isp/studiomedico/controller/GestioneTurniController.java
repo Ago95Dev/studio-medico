@@ -67,7 +67,7 @@ public class GestioneTurniController  implements Initializable,  DataInitializab
         oraFineTableColumn.setStyle("-fx-alignment: CENTER;");
         accettaTableColumn.setStyle("-fx-alignment: CENTER;");
         rifiutaTableColumn.setStyle("-fx-alignment: CENTER;");
-        dataTableColumn.setCellValueFactory(tf -> new SimpleStringProperty(tf.getValue().getData().getDayOfWeek().toString()));
+        dataTableColumn.setCellValueFactory(tf -> new SimpleStringProperty(tf.getValue().getData().getDayOfWeek().toString() + " " + tf.getValue().getData()));
         MedicoTableColumn.setCellValueFactory(tf -> new SimpleStringProperty(tf.getValue().getMedico().getNome() + " " + tf.getValue().getMedico().getCognome()));
         oraInizioTableColumn.setCellValueFactory(new PropertyValueFactory<>("orainizio"));
         oraFineTableColumn.setCellValueFactory(new PropertyValueFactory<>("orafine"));
