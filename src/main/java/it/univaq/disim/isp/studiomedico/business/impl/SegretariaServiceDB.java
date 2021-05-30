@@ -270,6 +270,7 @@ public class SegretariaServiceDB extends ConnessioneDB implements SegretariaServ
         }catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        inserisciTurno(turno.getMedico().getId(),turno.getData().plusWeeks(8).toString(),turno.getOrainizio().toString(),turno.getOrafine().toString());
     }
 
     @Override

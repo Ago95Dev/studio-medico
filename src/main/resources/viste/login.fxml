@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXPasswordField?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="651.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.univaq.disim.isp.studiomedico.controller.LoginController">
    <children>
@@ -60,7 +54,7 @@
             <Font size="13.0" />
          </font>
       </CheckBox>
-      <Label fx:id="loginErrorLabel" disable="true" layoutX="425.0" layoutY="189.0" text="Dati inseriti non validi!" textFill="#e63946" visible="false">
+      <Label fx:id="loginErrorLabel" disable="true" layoutX="425.0" layoutY="189.0" text="Dati inseriti non validi!" textFill="#eb0505" visible="false">
          <font>
             <Font size="14.0" />
          </font>

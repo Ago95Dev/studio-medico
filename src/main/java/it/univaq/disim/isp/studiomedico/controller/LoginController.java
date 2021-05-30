@@ -74,10 +74,12 @@ public class LoginController implements Initializable, DataInitializable<Object>
 				manage.loggedIn(utente);
 			}
 			else {
-				loginErrorLabel.setText("Email e/o password errati!");
+				//loginErrorLabel.setText("Email e/o password errati!");
+				loginErrorLabel.setVisible(true);
 			}
 		} catch (UtenteNotFoundException e) {
-			loginErrorLabel.setText("Email e/o password errati!");
+			//loginErrorLabel.setText("Email e/o password errati!");
+			loginErrorLabel.setVisible(true);
 		} catch (BusinessException e) {
 			// e.printStackTrace();
 			manage.renderError(e);

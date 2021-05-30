@@ -21,6 +21,7 @@ import javafx.util.Callback;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -177,8 +178,14 @@ public class PrenotazioneVisitaController implements Initializable,  DataInitial
     public void effettuaRiercaTurni(ActionEvent event) throws BusinessException {
       String stringamedico = medicoChoiceBoxField.getValue();
       String[] splitStrings = stringamedico.split("\\s+");
-      stampaListaTurni(prenotazioneService.getTurniByMedico(splitStrings[0],splitStrings[1]));
-
+      List<Turno> lista = new LinkedList<>();
+      //stampaListaTurni(prenotazioneService.getTurniByMedico(splitStrings[0],splitStrings[1]));
+        for (Turno t: prenotazioneService.getTurniByMedico(splitStrings[0],splitStrings[1])){
+            if (t.getData().isAfter(LocalDate.now()) || t.getData().isEqual(LocalDate.now())){
+                lista.add(t);
+            }
+        }
+        stampaListaTurni(lista);
     }
 
     public void stampaListaTurni(List<Turno> listaTurni){
