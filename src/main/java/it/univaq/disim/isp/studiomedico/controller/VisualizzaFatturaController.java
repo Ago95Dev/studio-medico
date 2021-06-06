@@ -68,7 +68,8 @@ public class VisualizzaFatturaController implements Initializable,  DataInitiali
     public void stampa(ActionEvent actionEvent) {
         try {
             Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream("C:/Users/loren/OneDrive/Desktop/FattureStudioMedico/" + prenotazione.getTurno().getData() + prenotazione.getOrainizio() + prenotazione.getOrafine() + prenotazione.getPaziente().getCf()  + "pdf" ));
+            //PdfWriter.getInstance(document, new FileOutputStream("C:/Users/loren/OneDrive/Desktop/FattureStudioMedico/" + prenotazione.getTurno().getData() + prenotazione.getOrainizio() + prenotazione.getOrafine() + prenotazione.getPaziente().getCf()  + "pdf" ));
+            PdfWriter.getInstance(document, new FileOutputStream("src/main/resources/fatture/" + prenotazione.getId() + prenotazione.getTurno().getData() + prenotazione.getPaziente().getCf()  + ".pdf" ));
             document.open();
             document.add(new Paragraph("Fattura rilasciata da: Studio Medico"));
             document.add(new Paragraph("In data: " + prenotazione.getTurno().getData()));
