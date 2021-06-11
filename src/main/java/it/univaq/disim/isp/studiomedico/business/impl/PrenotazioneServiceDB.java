@@ -289,6 +289,7 @@ public class PrenotazioneServiceDB extends ConnessioneDB implements Prenotazione
                     prenotazione.setOrafine(rs.getTime("fine").toLocalTime());
                     prenotazione.setVisita(getVisitaById(rs.getInt("id_tipo_visita")));
                     prenotazione.setTurno(getTurnoById(rs.getInt("id_turno")));
+                    prenotazione.setCheckin(rs.getBoolean("checkin"));
                     listaPrenotazioni.add(prenotazione);
                 }
             }
