@@ -89,7 +89,7 @@ public class StoricoVisiteController implements Initializable,  DataInitializabl
                     }
                 });
                 /*if (!(LocalDate.now().isBefore(param.getValue().getTurno().getData()))) {*/
-                if (param.getValue().isCheckin()) {
+                if (param.getValue().isCheckin() && LocalDate.now().isAfter(param.getValue().getTurno().getData()) ) {
                     return new SimpleObjectProperty<Button>(eseguitaButton);
                 }
                 return new SimpleObjectProperty<Button>(annullaButton);
